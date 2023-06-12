@@ -10,17 +10,10 @@ import FirebaseFirestore
 import Foundation
 
 class ExerciseSelectionViewViewModel: ObservableObject{
-    private var userId: String = ""
+    @Published var userId: String = ""
+    @Published var exercises = [Exercise]()
+
     init(){}
-    
-    func getExercises() -> [Exercise]{
-        return [
-            Exercise(id: "1", name: "Exercise 1", weight: 50, sets: "3", reps: "10", category: "Chest"),
-            Exercise(id: "2", name: "Exercise 2", weight: 50, sets: "3", reps: "10", category: "Chest"),
-            Exercise(id: "3", name: "Exercise 3", weight: 50, sets: "3", reps: "10", category: "Chest")
-            
-        ]
-    }
     
     func getUserId() -> String{
         guard let userId = Auth.auth().currentUser?.uid else{

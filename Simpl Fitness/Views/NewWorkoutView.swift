@@ -4,12 +4,14 @@
 //
 //  Created by Collin Holthaus on 6/11/23.
 //
-
+import FirebaseFirestoreSwift
 import SwiftUI
 
 struct NewWorkoutView: View {
     @StateObject var viewModel = NewWorkoutViewViewModel()
     @Binding var newItemPresented: Bool
+    var exercises: [Exercise]
+
 
     var body: some View {
         NavigationView{
@@ -29,7 +31,7 @@ struct NewWorkoutView: View {
                         .textFieldStyle(DefaultTextFieldStyle())
 
                     //Button
-                    NavigationLink("Select Exercises",destination: ExerciseSelectionView(newItemPresented: $newItemPresented,workoutName: viewModel.name, category: viewModel.category))
+                    NavigationLink("Select Exercises",destination: ExerciseSelectionView(newItemPresented: $newItemPresented,workoutName: viewModel.name, category: viewModel.category, exercises: exercises))
                 }
                 .alert(isPresented: $viewModel.showAlert){
                     Alert(title: Text("Error"), message: Text("Please fill in all field and select a due date"))
@@ -45,6 +47,6 @@ struct NewWorkoutView_Previews: PreviewProvider {
             return true
         }, set: {_ in
              
-        }))
+        }), exercises: [])
     }
 }

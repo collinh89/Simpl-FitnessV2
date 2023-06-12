@@ -5,6 +5,7 @@
 //  Created by Collin Holthaus on 6/11/23.
 //
 
+import FirebaseFirestoreSwift
 import SwiftUI
 
 struct ExerciseSelectionView: View {
@@ -14,12 +15,13 @@ struct ExerciseSelectionView: View {
 
     var workoutName = ""
     var category = ""
+    var exercises: [Exercise]
     
     var body: some View {
         NavigationView{
             VStack{
                 List(selection: $selectedRows) {
-                    ForEach(viewModel.getExercises(), id: \.id){ exercise in
+                    ForEach(exercises, id: \.id){ exercise in
                         HStack{
                             Text(exercise.name)
                             Spacer()
@@ -50,6 +52,6 @@ struct ExerciseSelectionView_Previews: PreviewProvider {
             return true
         }, set: {_ in
             
-        }), workoutName: "Test Workout", category: "Chest")
+        }), workoutName: "Test Workout", category: "Chest", exercises: [])
     }
 }

@@ -9,7 +9,7 @@ import FirebaseFirestore
 import Foundation
 
 class NewWorkoutViewViewModel: ObservableObject {
-    private var userId = ""
+    @Published var userId = ""
     @Published var name = ""
     @Published var category = ""
     @Published var exercises: [Exercise] = []

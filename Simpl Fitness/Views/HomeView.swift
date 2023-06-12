@@ -11,9 +11,11 @@ import SwiftUI
 struct HomeView: View {
     @StateObject var viewModel: HomeViewViewModel
     @FirestoreQuery var items: [Workout]
+    @FirestoreQuery var exercises: [Exercise]
     
     init(userId: String){
         self._items = FirestoreQuery(collectionPath: "users/\(userId)/workouts")
+        self._exercises = FirestoreQuery(collectionPath: "users/\(userId)/exercises")
         self._viewModel = StateObject(wrappedValue: HomeViewViewModel(userId: userId))
     }
     
@@ -45,7 +47,7 @@ struct HomeView: View {
                     }
                 }
                 .sheet(isPresented: $viewModel.showingNewItemView){
-                    NewWorkoutView(newItemPresented: $viewModel.showingNewItemView)
+                    NewWorkoutView(newItemPresented: $viewModel.showingNewItemView, exercises: exercises)
                 }
                 
             }

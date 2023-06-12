@@ -29,20 +29,21 @@ struct ExerciseView: View {
                             .tint(Color.red)
                         }
                 }
-                .navigationTitle("Exercises")
-                .toolbar{
-                    Button{
-                        //action
-                        viewModel.showingNewItemView = true
-                    } label: {
-                        Image(systemName: "plus")
-                    }
-                }
                 .sheet(isPresented: $viewModel.showingNewItemView){
                     NewExerciseView(newItemPresented: $viewModel.showingNewItemView)
                 }
                 Spacer()
             }
+            .navigationTitle("Exercises")
+            .toolbar{
+                Button{
+                    //action
+                    viewModel.showingNewItemView = true
+                } label: {
+                    Image(systemName: "plus")
+                }
+            }
+
             .background(Color(.lightGray))
         }
     }
