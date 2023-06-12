@@ -19,7 +19,7 @@ struct ExerciseView: View {
     var body: some View {
         NavigationView{
             VStack{
-                ForEach(items){ item in
+                List(items){ item in
                     ExerciseCard(exercise: item)
                         .swipeActions{
                             Button("Delete"){
@@ -28,13 +28,16 @@ struct ExerciseView: View {
                             }
                             .tint(Color.red)
                         }
+                        .listRowBackground(Color(.white))
+                        .listRowSeparator(.hidden)
                 }
+                .navigationTitle("Exercises")
+                .listStyle(InsetListStyle())
                 .sheet(isPresented: $viewModel.showingNewItemView){
                     NewExerciseView(newItemPresented: $viewModel.showingNewItemView)
                 }
                 Spacer()
             }
-            .navigationTitle("Exercises")
             .toolbar{
                 Button{
                     //action
@@ -43,8 +46,6 @@ struct ExerciseView: View {
                     Image(systemName: "plus")
                 }
             }
-
-            .background(Color(.lightGray))
         }
     }
     
