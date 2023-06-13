@@ -14,11 +14,13 @@ struct WorkoutListItem: View {
     var body: some View {
         NavigationView{
             VStack{
+                ScrollView{
                 Text(workout.name)
                     .font(.system(size: 40))
                     .bold()
-                ForEach(workout.exercises){ exercise in
-                    ExerciseCard(exercise: exercise)
+                    ForEach(workout.exercises){ exercise in
+                        ExerciseCard(exercise: exercise)
+                    }
                 }
                 Spacer()
             }

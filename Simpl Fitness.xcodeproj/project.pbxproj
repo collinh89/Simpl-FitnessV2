@@ -120,6 +120,66 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		518F0F272A37F38400F625D3 /* Workout */ = {
+			isa = PBXGroup;
+			children = (
+				5109A6962A368A4600DE4342 /* WorkoutListItem.swift */,
+				51CEB6432A3284CD00C06121 /* HomeView.swift */,
+				5149290D2A364B1100D00863 /* NewWorkoutView.swift */,
+				514929152A36556600D00863 /* ExerciseSelectionView.swift */,
+			);
+			path = Workout;
+			sourceTree = "<group>";
+		};
+		518F0F282A37F3BA00F625D3 /* Exercise */ = {
+			isa = PBXGroup;
+			children = (
+				5109A6982A36967B00DE4342 /* ExerciseCard.swift */,
+				5109A69A2A369EAA00DE4342 /* ExerciseView.swift */,
+				5109A69E2A36A12400DE4342 /* NewExerciseView.swift */,
+			);
+			path = Exercise;
+			sourceTree = "<group>";
+		};
+		518F0F292A37F3D300F625D3 /* Admin */ = {
+			isa = PBXGroup;
+			children = (
+				51CEB6472A3286B200C06121 /* LoginView.swift */,
+				51CEB6492A32872E00C06121 /* RegisterView.swift */,
+				51CEB6532A328B7200C06121 /* ProfileView.swift */,
+			);
+			path = Admin;
+			sourceTree = "<group>";
+		};
+		518F0F2A2A37F40B00F625D3 /* Workout View Models */ = {
+			isa = PBXGroup;
+			children = (
+				51CEB6452A32853800C06121 /* HomeViewViewModel.swift */,
+				5149290F2A364B5100D00863 /* NewWorkoutViewViewModel.swift */,
+				514929172A3655DD00D00863 /* ExerciseSelectionViewViewModel.swift */,
+			);
+			path = "Workout View Models";
+			sourceTree = "<group>";
+		};
+		518F0F2B2A37F42700F625D3 /* Exercise View Models */ = {
+			isa = PBXGroup;
+			children = (
+				5109A69C2A369FDA00DE4342 /* ExerciseViewViewModel.swift */,
+				5109A6A02A36A17700DE4342 /* NewExerciseViewViewModel.swift */,
+			);
+			path = "Exercise View Models";
+			sourceTree = "<group>";
+		};
+		518F0F2C2A37F43F00F625D3 /* Admin View Models */ = {
+			isa = PBXGroup;
+			children = (
+				51CEB64B2A32876A00C06121 /* RegisterViewViewModel.swift */,
+				51CEB6512A32881F00C06121 /* LoginViewViewModel.swift */,
+				51CEB6552A328BAA00C06121 /* ProfileViewViewModel.swift */,
+			);
+			path = "Admin View Models";
+			sourceTree = "<group>";
+		};
 		51CEB5FA2A327FF100C06121 = {
 			isa = PBXGroup;
 			children = (
@@ -184,14 +244,9 @@
 			isa = PBXGroup;
 			children = (
 				51CEB63F2A32846800C06121 /* MainViewViewModel.swift */,
-				51CEB6452A32853800C06121 /* HomeViewViewModel.swift */,
-				51CEB64B2A32876A00C06121 /* RegisterViewViewModel.swift */,
-				51CEB6512A32881F00C06121 /* LoginViewViewModel.swift */,
-				51CEB6552A328BAA00C06121 /* ProfileViewViewModel.swift */,
-				5149290F2A364B5100D00863 /* NewWorkoutViewViewModel.swift */,
-				514929172A3655DD00D00863 /* ExerciseSelectionViewViewModel.swift */,
-				5109A69C2A369FDA00DE4342 /* ExerciseViewViewModel.swift */,
-				5109A6A02A36A17700DE4342 /* NewExerciseViewViewModel.swift */,
+				518F0F2A2A37F40B00F625D3 /* Workout View Models */,
+				518F0F2C2A37F43F00F625D3 /* Admin View Models */,
+				518F0F2B2A37F42700F625D3 /* Exercise View Models */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -200,16 +255,9 @@
 			isa = PBXGroup;
 			children = (
 				51CEB6082A327FF200C06121 /* MainView.swift */,
-				51CEB6432A3284CD00C06121 /* HomeView.swift */,
-				51CEB6472A3286B200C06121 /* LoginView.swift */,
-				51CEB6492A32872E00C06121 /* RegisterView.swift */,
-				51CEB6532A328B7200C06121 /* ProfileView.swift */,
-				5149290D2A364B1100D00863 /* NewWorkoutView.swift */,
-				514929152A36556600D00863 /* ExerciseSelectionView.swift */,
-				5109A6962A368A4600DE4342 /* WorkoutListItem.swift */,
-				5109A6982A36967B00DE4342 /* ExerciseCard.swift */,
-				5109A69A2A369EAA00DE4342 /* ExerciseView.swift */,
-				5109A69E2A36A12400DE4342 /* NewExerciseView.swift */,
+				518F0F272A37F38400F625D3 /* Workout */,
+				518F0F292A37F3D300F625D3 /* Admin */,
+				518F0F282A37F3BA00F625D3 /* Exercise */,
 			);
 			path = Views;
 			sourceTree = "<group>";
