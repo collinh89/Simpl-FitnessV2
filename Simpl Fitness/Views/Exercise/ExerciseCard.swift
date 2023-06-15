@@ -9,33 +9,55 @@ import SwiftUI
 
 struct ExerciseCard: View {
     var exercise: Exercise
-    
+    var fromWorkoutList = false
+    @State var isExpanded = false
+    @State private var isDone = false
+
     var body: some View {
-            VStack(alignment: .center){
-                    Text(exercise.name)
-                        .font(.system(size: 26, weight: .bold, design: .default))
-                        .foregroundColor(.white)
-                        .padding()
-                
+        
+        VStack(alignment: .center){
+            HStack{
+                if(fromWorkoutList == true){
+                    Toggle("Done", isOn: $isDone)
+                      .tint(isDone ? Color("OxfordBlue") : .white)
+                      .toggleStyle(DefaultToggleStyle())
+                      .labelsHidden()
+                      .padding()
+                    Spacer()
+                }
+                Text(exercise.name)
+                    .font(.system(size: 26, weight: .bold, design: .default))
+                    .foregroundColor(isDone ? Color("CGrey") : .white)
+                    .padding()
+                Spacer()
+                NavigationLink(destination: EditExerciseView(exercise: exercise), label: {
+                    Text(Image(systemName: "square.and.pencil"))                            .foregroundColor(isDone ? Color("CGrey") : .white)
+
+                })
+                .padding()
+
+            }
+            
+            if isExpanded {
                 HStack{
                     VStack{
                         Text("Weight")
                             .font(.system(size: 20, weight: .bold, design: .default))
-                            .foregroundColor(.white)
+                            .foregroundColor(isDone ? Color("CGrey") : .white)
                         Text("\(String(exercise.weight)) lbs")
                             .font(.system(size: 17, weight: .light, design: .default))
-                            .foregroundColor(.white)
+                            .foregroundColor(isDone ? Color("CGrey") : .white)
                     }
                     .padding(.leading)
                     .padding(.trailing)
-
+                    
                     VStack{
                         Text("Reps")
                             .font(.system(size: 20, weight: .bold, design: .default))
-                            .foregroundColor(.white)
+                            .foregroundColor(isDone ? Color("CGrey") : .white)
                         Text(exercise.reps)
                             .font(.system(size: 17, weight: .light, design: .default))
-                            .foregroundColor(.white)
+                            .foregroundColor(isDone ? Color("CGrey") : .white)
                     }
                     .padding(.leading)
                     .padding(.trailing)
@@ -43,34 +65,41 @@ struct ExerciseCard: View {
                     VStack{
                         Text("Sets")
                             .font(.system(size: 20, weight: .bold, design: .default))
-                            .foregroundColor(.white)
+                            .foregroundColor(isDone ? Color("CGrey") : .white)
                         Text(exercise.sets)
                             .font(.system(size: 17, weight: .light, design: .default))
-                            .foregroundColor(.white)
+                            .foregroundColor(isDone ? Color("CGrey") : .white)
                     }
                     .padding(.leading)
                     .padding(.trailing)
-                }
+                }            .padding(.bottom)
                 
-                .padding(.bottom)
             }
-            .frame(maxWidth: .infinity, alignment: .center)
-            .background(Color("MyBlue"))
-            .modifier(CardModifier())
-            .padding(.all, 10)
+            
         }
+        .transition(.move(edge: .bottom))
+        .onTapGesture {
+            withAnimation {
+                isExpanded.toggle()
+            }
+        }
+        .frame(maxWidth: .infinity, alignment: .center)
+        .background(isDone ? Color("LightCyan") : Color("OxfordBlue"))
+        .modifier(CardModifier())
+        .padding(.all, 10)
     }
+}
 
 struct CardModifier: ViewModifier {
     func body(content: Content) -> some View {
         content
-            .cornerRadius(20)
-            .shadow(color: Color.black.opacity(0.2), radius: 20, x: 0, y: 0)
+            .cornerRadius(10)
+            .shadow(color: Color.black.opacity(0.2), radius: 10, x: 0, y: 0)
     }
     
 }
 struct ExerciseCard_Previews: PreviewProvider {
     static var previews: some View {
-        ExerciseCard(exercise: Exercise(id: "123", name: "Dumbbell Bench Press", weight: 50, sets: "2", reps: "8", category: "Chest"))
+        ExerciseCard(exercise: Exercise(id: "123", name: "Dumbbell Bench Press", weight: 50, sets: "2", reps: "8", category: "Chest"), fromWorkoutList: false)
     }
 }

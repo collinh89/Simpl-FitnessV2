@@ -21,37 +21,48 @@ struct HomeView: View {
     
     var body: some View {
         NavigationView{
-            VStack{
-                List(items){ item in
-                    NavigationLink(destination: WorkoutListItem(workout: item), label: {
-                        Text(item.name)
-                            .font(.system(size: 20))
-                            .bold()
-                            .padding()
-                    })
-                    .swipeActions{
-                        Button("Delete"){
-                            //action here
-                            viewModel.delete(id: item.id)
+            ZStack{
+                VStack{
+                    Text("Workouts")
+                        .font(.system(size: 36, weight: .bold))
+                        .foregroundColor(Color("OxfordBlue"))
+                    List(items){ item in
+                        NavigationLink(destination: WorkoutListItem(workout: item, exercises: item.exercises), label: {
+                            Text(item.name)
+                                .foregroundColor(Color("OxfordBlue"))
+                                .font(.system(size: 20))
+                                .bold()
+                                .padding()
+                        })
+                        .swipeActions{
+                            Button("Delete"){
+                                //action here
+                                viewModel.delete(id: item.id)
+                            }
+                            .tint(Color.red)
                         }
-                        .tint(Color.red)
+                        .listRowBackground(Color("CadetGrey"))
                     }
-                }
-                .navigationTitle("Workouts")
-                .toolbar{
-                    Button{
-                        //action
-                        viewModel.showingNewItemView = true
-                    } label: {
-                        Image(systemName: "plus")
+                    .listStyle(InsetListStyle())
+                    .scrollContentBackground(.hidden)
+                    .navigationBarTitleDisplayMode(.inline)
+                    .toolbar{
+                        Button{
+                            //action
+                            viewModel.showingNewItemView = true
+                        } label: {
+                            Image(systemName: "plus")
+                                .foregroundColor(Color("LightCyan"))
+                        }
                     }
+                    .sheet(isPresented: $viewModel.showingNewItemView){
+                        NewWorkoutView(newItemPresented: $viewModel.showingNewItemView, exercises: exercises)
+                    }
+                    
                 }
-                .sheet(isPresented: $viewModel.showingNewItemView){
-                    NewWorkoutView(newItemPresented: $viewModel.showingNewItemView, exercises: exercises)
-                }
-                
             }
-            .background(Color(.lightGray))
+            .background(Color("CadetGrey"))
+            
         }
     }
     

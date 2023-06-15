@@ -11,6 +11,7 @@ import Foundation
 class ExerciseViewViewModel: ObservableObject{
     private let userId: String
     @Published var showingNewItemView = false
+    @Published var categories: Set<String> = []
 
     
     init(userId: String){
@@ -25,6 +26,13 @@ class ExerciseViewViewModel: ObservableObject{
             .collection("exercises")
             .document(id)
             .delete()
+    }
+    
+    func getCategories(exercises: [Exercise]){
+        let categoryArr = exercises.map {(exercise) -> String in
+            return exercise.category
+        }
+        categories = Set<String>(categoryArr)
     }
     
 }

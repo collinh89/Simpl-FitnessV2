@@ -13,6 +13,9 @@
 		5109A69D2A369FDA00DE4342 /* ExerciseViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5109A69C2A369FDA00DE4342 /* ExerciseViewViewModel.swift */; };
 		5109A69F2A36A12400DE4342 /* NewExerciseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5109A69E2A36A12400DE4342 /* NewExerciseView.swift */; };
 		5109A6A12A36A17700DE4342 /* NewExerciseViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5109A6A02A36A17700DE4342 /* NewExerciseViewViewModel.swift */; };
+		510FB9F42A37FF4800D8839D /* EditExerciseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 510FB9F32A37FF4800D8839D /* EditExerciseView.swift */; };
+		510FB9F62A3801FC00D8839D /* EditExerciseViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 510FB9F52A3801FC00D8839D /* EditExerciseViewViewModel.swift */; };
+		513CE6B92A3BA1CE009FCC44 /* SwiftUIReorderableForEach in Frameworks */ = {isa = PBXBuildFile; productRef = 513CE6B82A3BA1CE009FCC44 /* SwiftUIReorderableForEach */; };
 		5149290E2A364B1100D00863 /* NewWorkoutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5149290D2A364B1100D00863 /* NewWorkoutView.swift */; };
 		514929102A364B5100D00863 /* NewWorkoutViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5149290F2A364B5100D00863 /* NewWorkoutViewViewModel.swift */; };
 		514929122A364BBA00D00863 /* Workout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 514929112A364BBA00D00863 /* Workout.swift */; };
@@ -64,6 +67,8 @@
 		5109A69C2A369FDA00DE4342 /* ExerciseViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseViewViewModel.swift; sourceTree = "<group>"; };
 		5109A69E2A36A12400DE4342 /* NewExerciseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewExerciseView.swift; sourceTree = "<group>"; };
 		5109A6A02A36A17700DE4342 /* NewExerciseViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewExerciseViewViewModel.swift; sourceTree = "<group>"; };
+		510FB9F32A37FF4800D8839D /* EditExerciseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditExerciseView.swift; sourceTree = "<group>"; };
+		510FB9F52A3801FC00D8839D /* EditExerciseViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditExerciseViewViewModel.swift; sourceTree = "<group>"; };
 		5149290D2A364B1100D00863 /* NewWorkoutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewWorkoutView.swift; sourceTree = "<group>"; };
 		5149290F2A364B5100D00863 /* NewWorkoutViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewWorkoutViewViewModel.swift; sourceTree = "<group>"; };
 		514929112A364BBA00D00863 /* Workout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Workout.swift; sourceTree = "<group>"; };
@@ -100,6 +105,7 @@
 				51CEB6372A32832C00C06121 /* FirebaseAuth in Frameworks */,
 				51CEB6392A32832C00C06121 /* FirebaseFirestore in Frameworks */,
 				51CEB63B2A32832C00C06121 /* FirebaseFirestoreSwift in Frameworks */,
+				513CE6B92A3BA1CE009FCC44 /* SwiftUIReorderableForEach in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -137,6 +143,7 @@
 				5109A6982A36967B00DE4342 /* ExerciseCard.swift */,
 				5109A69A2A369EAA00DE4342 /* ExerciseView.swift */,
 				5109A69E2A36A12400DE4342 /* NewExerciseView.swift */,
+				510FB9F32A37FF4800D8839D /* EditExerciseView.swift */,
 			);
 			path = Exercise;
 			sourceTree = "<group>";
@@ -166,6 +173,7 @@
 			children = (
 				5109A69C2A369FDA00DE4342 /* ExerciseViewViewModel.swift */,
 				5109A6A02A36A17700DE4342 /* NewExerciseViewViewModel.swift */,
+				510FB9F52A3801FC00D8839D /* EditExerciseViewViewModel.swift */,
 			);
 			path = "Exercise View Models";
 			sourceTree = "<group>";
@@ -282,6 +290,7 @@
 				51CEB6362A32832C00C06121 /* FirebaseAuth */,
 				51CEB6382A32832C00C06121 /* FirebaseFirestore */,
 				51CEB63A2A32832C00C06121 /* FirebaseFirestoreSwift */,
+				513CE6B82A3BA1CE009FCC44 /* SwiftUIReorderableForEach */,
 			);
 			productName = "Simpl Fitness";
 			productReference = 51CEB6032A327FF200C06121 /* Simpl Fitness.app */;
@@ -357,6 +366,7 @@
 			mainGroup = 51CEB5FA2A327FF100C06121;
 			packageReferences = (
 				51CEB6352A32832C00C06121 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				513CE6B72A3BA1CE009FCC44 /* XCRemoteSwiftPackageReference "swiftui-reorderable-foreach" */,
 			);
 			productRefGroup = 51CEB6042A327FF200C06121 /* Products */;
 			projectDirPath = "";
@@ -403,6 +413,7 @@
 			files = (
 				5109A6A12A36A17700DE4342 /* NewExerciseViewViewModel.swift in Sources */,
 				514929102A364B5100D00863 /* NewWorkoutViewViewModel.swift in Sources */,
+				510FB9F42A37FF4800D8839D /* EditExerciseView.swift in Sources */,
 				51CEB6522A32881F00C06121 /* LoginViewViewModel.swift in Sources */,
 				514929182A3655DD00D00863 /* ExerciseSelectionViewViewModel.swift in Sources */,
 				51CEB6482A3286B200C06121 /* LoginView.swift in Sources */,
@@ -421,6 +432,7 @@
 				51CEB64A2A32872E00C06121 /* RegisterView.swift in Sources */,
 				51CEB6502A3287C000C06121 /* Extensions.swift in Sources */,
 				51CEB64E2A32879400C06121 /* User.swift in Sources */,
+				510FB9F62A3801FC00D8839D /* EditExerciseViewViewModel.swift in Sources */,
 				51CEB6442A3284CD00C06121 /* HomeView.swift in Sources */,
 				5109A69B2A369EAA00DE4342 /* ExerciseView.swift in Sources */,
 				51CEB6072A327FF200C06121 /* Simpl_FitnessApp.swift in Sources */,
@@ -778,6 +790,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		513CE6B72A3BA1CE009FCC44 /* XCRemoteSwiftPackageReference "swiftui-reorderable-foreach" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/globulus/swiftui-reorderable-foreach";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
 		51CEB6352A32832C00C06121 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
@@ -789,6 +809,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		513CE6B82A3BA1CE009FCC44 /* SwiftUIReorderableForEach */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 513CE6B72A3BA1CE009FCC44 /* XCRemoteSwiftPackageReference "swiftui-reorderable-foreach" */;
+			productName = SwiftUIReorderableForEach;
+		};
 		51CEB6362A32832C00C06121 /* FirebaseAuth */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 51CEB6352A32832C00C06121 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
