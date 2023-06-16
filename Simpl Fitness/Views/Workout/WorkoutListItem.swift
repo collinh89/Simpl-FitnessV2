@@ -9,6 +9,7 @@ import SwiftUI
 import SwiftUIReorderableForEach
 
 struct WorkoutListItem: View {
+    @StateObject var viewModel = WorkoutListItemViewModel()
     var workout: Workout
     @State private var isDone = false
     @State private var allowReordering = false
@@ -31,20 +32,30 @@ struct WorkoutListItem: View {
                             .padding()
                         Spacer()
                         Toggle("Reorder", isOn: $allowReordering)
-                          .tint(Color("LightCyan"))
-                          .toggleStyle(SwitchToggleStyle())
-                          .labelsHidden()
+                            .onChange(of: allowReordering) { value in
+                                // action...
+                                if(value == false){
+                                    viewModel.UpdateExerciseOrder(exercises: exercises, workout: workout)
+                                }
+                                print(value)
+                            }
+                            .tint(Color("LightCyan"))
+                            .toggleStyle(SwitchToggleStyle())
+                            .labelsHidden()
                     }
                     ReorderableForEach($exercises, allowReordering: $allowReordering){ exercise,isDragged  in
                         ExerciseCard(exercise: exercise, fromWorkoutList: true)
                     }
-                    .onTapGesture {
-                        isDone = !isDone
-                    }
                 }
                 Spacer()
             }
-            .background(Color("CGrey"))
+            .background(Color("CadetGrey"))
+        }
+        .toolbar{
+            NavigationLink(destination: AddOrRemoveExerciseView(workout: workout), label: {
+                Image(systemName: "square.and.pencil")
+                    .foregroundColor(.white)
+            })
         }
     }
 }

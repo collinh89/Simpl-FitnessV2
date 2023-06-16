@@ -44,7 +44,6 @@ class EditExerciseViewViewModel: ObservableObject{
              reps: reps,
              category: category
         )
-        print(exerciseToUpdate)
         let db = Firestore.firestore()
         db.collection("users")
             .document(self.userId)

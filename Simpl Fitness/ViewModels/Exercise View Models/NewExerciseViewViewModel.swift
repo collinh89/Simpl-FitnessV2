@@ -35,7 +35,7 @@ class NewExerciseViewViewModel:ObservableObject{
              reps: reps,
              category: category
         )
-        print(self.userId)
+        print(newExercise)
         let db = Firestore.firestore()
         db.collection("users")
             .document(self.userId)

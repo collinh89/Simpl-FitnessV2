@@ -10,7 +10,17 @@ import SwiftUI
 struct NewExerciseView: View {
     @StateObject var viewModel = NewExerciseViewViewModel()
     @Binding var newItemPresented: Bool
-    
+    @State private var selection = "Abs"
+    @State private var categories = [
+        "Abs",
+        "Chest",
+        "Legs",
+        "Shoulders",
+        "Tricepts",
+        "Bicepts",
+        "Back"
+    ]
+
     var body: some View {
         NavigationView{
             VStack{
@@ -25,8 +35,19 @@ struct NewExerciseView: View {
                         .textFieldStyle(DefaultTextFieldStyle())
                     
                     //Category
-                    TextField("Category", text: $viewModel.category)
-                        .textFieldStyle(DefaultTextFieldStyle())
+                    VStack{
+                        Picker("\(selection)", selection: $selection) {
+                            ForEach(categories, id: \.self) {
+                                Text($0)
+                            }
+                        }
+                        .labelsHidden()
+                        .pickerStyle(MenuPickerStyle())
+                        
+                    }
+
+//                    TextField("Category", text: $viewModel.category)
+//                        .textFieldStyle(DefaultTextFieldStyle())
 
                     //Weight
                     TextField("Weight", value: $viewModel.weight, formatter: NumberFormatter())
@@ -44,6 +65,7 @@ struct NewExerciseView: View {
                     //button
                     Button{
                         //action
+                        viewModel.category = selection
                         viewModel.saveExercise()
                         newItemPresented = false
                     } label: {

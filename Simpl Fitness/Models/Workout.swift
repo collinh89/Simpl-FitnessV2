@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Workout: Codable, Identifiable{
+struct Workout: Codable, Identifiable, Hashable{
     let id: String
     let name: String
     let category: String

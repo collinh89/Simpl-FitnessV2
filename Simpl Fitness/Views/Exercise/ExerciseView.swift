@@ -34,7 +34,7 @@ struct ExerciseView: View {
                                 
                                 ForEach(items.filter{$0.category == item}){ item in
                                     ExerciseCard(exercise: item)
-                                        .swipeActions{
+                                        .swipeActions(edge: .trailing){
                                             Button("Delete"){
                                                 //action here
                                                 viewModel.delete(id: item.id)
@@ -62,8 +62,8 @@ struct ExerciseView: View {
                     }
                 }
             }
-            .toolbarBackground(Color("CGrey"), for: .navigationBar)
-            .background(Color("CGrey"))
+            .toolbarBackground(Color("CadetGrey"), for: .navigationBar)
+            .background(Color("CadetGrey"))
         }.onAppear{
             viewModel.getCategories(exercises: items)
         }
