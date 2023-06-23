@@ -12,12 +12,19 @@ import Foundation
 class AddOrRemoveExerciseViewViewModel: ObservableObject {
     private var userId = ""
     @Published var allExercises: [Exercise] = []
+    @Published var categories: Set<String> = []
     
     init(){
         guard let uId = Auth.auth().currentUser?.uid else {
             return
         }
         self.userId = uId
+    }
+    func getCategories(){
+        let categoryArr = self.allExercises.map {(exercise) -> String in
+            return exercise.category
+        }
+        self.categories = Set<String>(categoryArr)
     }
     
     func addExercisesToWorkout(workout: Workout, exerciseToAdd: Exercise){
@@ -69,6 +76,7 @@ class AddOrRemoveExerciseViewViewModel: ObservableObject {
                         )
                         self.allExercises.append(exercise)
                     }
+                    self.getCategories()
                 }
             }
     }

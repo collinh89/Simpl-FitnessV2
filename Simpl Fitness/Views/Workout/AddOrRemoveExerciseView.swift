@@ -46,31 +46,34 @@ struct AddOrRemoveExerciseView: View {
                     Text("All Exercises")
                         .font(.system(size: 36, weight: .bold))
                         .foregroundColor(Color("OxfordBlue"))
-                    ForEach(viewModel.allExercises.sorted {
-                        $0.category < $1.category
-                    }) { exercise in
-                        ZStack {
-                            RoundedRectangle(cornerRadius: 25, style: .continuous)
-                                .fill(Color("OxfordBlue"))
-                            
-                            HStack {
-                                Text(exercise.name)
-                                    .font(.system(size: 20, weight: .bold))
-                                    .foregroundColor(.white)
-                                    .padding()
-                                Spacer()
-                                Button{
-                                    viewModel.addExercisesToWorkout(workout: workout, exerciseToAdd: exercise)
-                                }label: {
-                                    Image(systemName: "plus.circle")
+                    ForEach(viewModel.categories.sorted(), id: \.self){ category in
+                        Section(){
+                            Text(category)
+                            ForEach(viewModel.allExercises.filter{$0.category == category}) { exercise in
+                                ZStack {
+                                    RoundedRectangle(cornerRadius: 25, style: .continuous)
+                                        .fill(Color("OxfordBlue"))
+                                    
+                                    HStack {
+                                        Text(exercise.name)
+                                            .font(.system(size: 20, weight: .bold))
+                                            .foregroundColor(.white)
+                                            .padding()
+                                        Spacer()
+                                        Button{
+                                            viewModel.addExercisesToWorkout(workout: workout, exerciseToAdd: exercise)
+                                        }label: {
+                                            Image(systemName: "plus.circle")
+                                        }
+                                        .font(.system(size: 20, weight: .bold))
+                                        .foregroundColor(.white)
+                                        .padding()
+             
+                                    }
                                 }
-                                .font(.system(size: 20, weight: .bold))
-                                .foregroundColor(.white)
-                                .padding()
-     
+                                .frame(width: 400, height: 100)
                             }
                         }
-                        .frame(width: 400, height: 100)
                     }
                 }
             }
