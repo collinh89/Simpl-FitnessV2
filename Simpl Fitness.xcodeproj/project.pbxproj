@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		190AEAE52A55BFA100D25654 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 190AEAE42A55BFA100D25654 /* GoogleService-Info.plist */; };
 		5109A6972A368A4600DE4342 /* WorkoutListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5109A6962A368A4600DE4342 /* WorkoutListItem.swift */; };
 		5109A6992A36967B00DE4342 /* ExerciseCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5109A6982A36967B00DE4342 /* ExerciseCard.swift */; };
 		5109A69B2A369EAA00DE4342 /* ExerciseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5109A69A2A369EAA00DE4342 /* ExerciseView.swift */; };
@@ -29,7 +30,6 @@
 		51CEB6092A327FF200C06121 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51CEB6082A327FF200C06121 /* MainView.swift */; };
 		51CEB60B2A327FF200C06121 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 51CEB60A2A327FF200C06121 /* Assets.xcassets */; };
 		51CEB60F2A327FF200C06121 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 51CEB60E2A327FF200C06121 /* Preview Assets.xcassets */; };
-		51CEB6342A32819700C06121 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 51CEB6332A32819700C06121 /* GoogleService-Info.plist */; };
 		51CEB6372A32832C00C06121 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 51CEB6362A32832C00C06121 /* FirebaseAuth */; };
 		51CEB6392A32832C00C06121 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 51CEB6382A32832C00C06121 /* FirebaseFirestore */; };
 		51CEB63B2A32832C00C06121 /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 51CEB63A2A32832C00C06121 /* FirebaseFirestoreSwift */; };
@@ -64,6 +64,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		190AEAE42A55BFA100D25654 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		5109A6962A368A4600DE4342 /* WorkoutListItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutListItem.swift; sourceTree = "<group>"; };
 		5109A6982A36967B00DE4342 /* ExerciseCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseCard.swift; sourceTree = "<group>"; };
 		5109A69A2A369EAA00DE4342 /* ExerciseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseView.swift; sourceTree = "<group>"; };
@@ -89,7 +90,6 @@
 		51CEB60E2A327FF200C06121 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		51CEB6142A327FF300C06121 /* Simpl FitnessTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Simpl FitnessTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		51CEB61E2A327FF300C06121 /* Simpl FitnessUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Simpl FitnessUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		51CEB6332A32819700C06121 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		51CEB63F2A32846800C06121 /* MainViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewViewModel.swift; sourceTree = "<group>"; };
 		51CEB6432A3284CD00C06121 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		51CEB6452A32853800C06121 /* HomeViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewViewModel.swift; sourceTree = "<group>"; };
@@ -239,7 +239,7 @@
 		51CEB6322A32807E00C06121 /* Other */ = {
 			isa = PBXGroup;
 			children = (
-				51CEB6332A32819700C06121 /* GoogleService-Info.plist */,
+				190AEAE42A55BFA100D25654 /* GoogleService-Info.plist */,
 				51CEB6062A327FF200C06121 /* Simpl_FitnessApp.swift */,
 				51CEB60A2A327FF200C06121 /* Assets.xcassets */,
 				51CEB64F2A3287C000C06121 /* Extensions.swift */,
@@ -395,7 +395,7 @@
 			files = (
 				51CEB60F2A327FF200C06121 /* Preview Assets.xcassets in Resources */,
 				51CEB60B2A327FF200C06121 /* Assets.xcassets in Resources */,
-				51CEB6342A32819700C06121 /* GoogleService-Info.plist in Resources */,
+				190AEAE52A55BFA100D25654 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -10,19 +10,25 @@ import SwiftUI
 struct ExerciseCard: View {
     var exercise: Exercise
     var fromWorkoutList = false
-    @State var isExpanded = false
+    var onSelectionPage = false
+    @State var isExpanded = true
     @State private var isDone = false
-
+    
     var body: some View {
         
         VStack(alignment: .center){
             HStack{
                 if(fromWorkoutList == true){
                     Toggle("Done", isOn: $isDone)
-                      .tint(isDone ? Color("OxfordBlue") : .white)
-                      .toggleStyle(DefaultToggleStyle())
-                      .labelsHidden()
-                      .padding()
+                        .tint(isDone ? Color("OxfordBlue") : .white)
+                        .toggleStyle(DefaultToggleStyle())
+                        .labelsHidden()
+                        .padding()
+                        .onTapGesture {
+                            withAnimation {
+                                isExpanded.toggle()
+                            }
+                        }
                     Spacer()
                 }
                 Text(exercise.name)
@@ -30,12 +36,13 @@ struct ExerciseCard: View {
                     .foregroundColor(isDone ? Color("CGrey") : .white)
                     .padding()
                 Spacer()
-                NavigationLink(destination: EditExerciseView(exercise: exercise), label: {
-                    Text(Image(systemName: "square.and.pencil"))                            .foregroundColor(isDone ? Color("CGrey") : .white)
-
-                })
-                .padding()
-
+                if(onSelectionPage != true){
+                    NavigationLink(destination: EditExerciseView(exercise: exercise), label: {
+                        Text(Image(systemName: "square.and.pencil"))                            .foregroundColor(isDone ? Color("CGrey") : .white)
+                        
+                    })
+                    .padding()
+                }
             }
             
             if isExpanded {
@@ -78,11 +85,6 @@ struct ExerciseCard: View {
             
         }
         .transition(.move(edge: .bottom))
-        .onTapGesture {
-            withAnimation {
-                isExpanded.toggle()
-            }
-        }
         .frame(maxWidth: .infinity, alignment: .center)
         .background(isDone ? Color("LightCyan") : Color("OxfordBlue"))
         .modifier(CardModifier())
@@ -100,6 +102,6 @@ struct CardModifier: ViewModifier {
 }
 struct ExerciseCard_Previews: PreviewProvider {
     static var previews: some View {
-        ExerciseCard(exercise: Exercise(id: "123", name: "Dumbbell Bench Press", weight: 50, sets: "2", reps: "8", category: "Chest"), fromWorkoutList: false)
+        ExerciseCard(exercise: Exercise(id: "123", name: "Dumbbell Bench Press", weight: 50, sets: "2", reps: "8", category: "Chest"), fromWorkoutList: false, onSelectionPage: true)
     }
 }

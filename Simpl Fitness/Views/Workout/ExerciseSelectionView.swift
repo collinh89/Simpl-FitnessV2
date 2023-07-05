@@ -12,7 +12,7 @@ struct ExerciseSelectionView: View {
     @StateObject var viewModel = ExerciseSelectionViewViewModel()
     @State var selectedRows = Set<Exercise>()
     @Binding var newItemPresented: Bool
-
+    
     var workoutName = ""
     var category = ""
     var exercises: [Exercise]
@@ -21,9 +21,17 @@ struct ExerciseSelectionView: View {
         NavigationView{
             VStack{
                 List(selection: $selectedRows) {
-                    ForEach(exercises, id: \.id){ exercise in
+                    ForEach(exercises.sorted {
+                        $0.category < $1.category
+                    }, id: \.id){ exercise in
                         HStack{
-                            Text(exercise.name)
+                            VStack{
+                                Text(exercise.category)
+                                    .listRowBackground(Color(.lightGray))
+                                ExerciseCard(exercise: exercise, fromWorkoutList: false, onSelectionPage: true)
+                                
+                            }
+                            
                             Spacer()
                             Button{
                                 selectedRows.insert(exercise)
@@ -31,8 +39,11 @@ struct ExerciseSelectionView: View {
                                 Text(Image(systemName: "plus.circle"))
                             }
                         }
+                        .listRowBackground(Color(.lightGray))
+                        
                     }
                 }
+                .listRowSeparator(.hidden)
                 .navigationTitle("Select Exercises \(selectedRows.count)")
                 Button{
                     //action
