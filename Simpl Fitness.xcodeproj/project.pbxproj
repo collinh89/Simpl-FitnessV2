@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		190AEAE52A55BFA100D25654 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 190AEAE42A55BFA100D25654 /* GoogleService-Info.plist */; };
+		199506C72A5F459D00E696D4 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 199506C62A5F459D00E696D4 /* GoogleService-Info.plist */; };
 		5109A6972A368A4600DE4342 /* WorkoutListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5109A6962A368A4600DE4342 /* WorkoutListItem.swift */; };
 		5109A6992A36967B00DE4342 /* ExerciseCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5109A6982A36967B00DE4342 /* ExerciseCard.swift */; };
 		5109A69B2A369EAA00DE4342 /* ExerciseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5109A69A2A369EAA00DE4342 /* ExerciseView.swift */; };
@@ -64,8 +64,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		190AEAE42A55BFA100D25654 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
-		1927EEA82A5F0B000095BB4F /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		199506C62A5F459D00E696D4 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		5109A6962A368A4600DE4342 /* WorkoutListItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutListItem.swift; sourceTree = "<group>"; };
 		5109A6982A36967B00DE4342 /* ExerciseCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseCard.swift; sourceTree = "<group>"; };
 		5109A69A2A369EAA00DE4342 /* ExerciseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseView.swift; sourceTree = "<group>"; };
@@ -201,6 +200,7 @@
 		51CEB5FA2A327FF100C06121 = {
 			isa = PBXGroup;
 			children = (
+				199506C62A5F459D00E696D4 /* GoogleService-Info.plist */,
 				51CEB6052A327FF200C06121 /* Simpl Fitness */,
 				51CEB6042A327FF200C06121 /* Products */,
 			);
@@ -219,7 +219,6 @@
 		51CEB6052A327FF200C06121 /* Simpl Fitness */ = {
 			isa = PBXGroup;
 			children = (
-				1927EEA82A5F0B000095BB4F /* GoogleService-Info.plist */,
 				51CEB63E2A3283F700C06121 /* Views */,
 				51CEB63D2A3283EA00C06121 /* ViewModels */,
 				51CEB63C2A3283DE00C06121 /* Models */,
@@ -241,7 +240,6 @@
 		51CEB6322A32807E00C06121 /* Other */ = {
 			isa = PBXGroup;
 			children = (
-				190AEAE42A55BFA100D25654 /* GoogleService-Info.plist */,
 				51CEB6062A327FF200C06121 /* Simpl_FitnessApp.swift */,
 				51CEB60A2A327FF200C06121 /* Assets.xcassets */,
 				51CEB64F2A3287C000C06121 /* Extensions.swift */,
@@ -397,7 +395,7 @@
 			files = (
 				51CEB60F2A327FF200C06121 /* Preview Assets.xcassets in Resources */,
 				51CEB60B2A327FF200C06121 /* Assets.xcassets in Resources */,
-				190AEAE52A55BFA100D25654 /* GoogleService-Info.plist in Resources */,
+				199506C72A5F459D00E696D4 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
