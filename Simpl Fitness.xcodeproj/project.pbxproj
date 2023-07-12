@@ -140,7 +140,6 @@
 				5149290D2A364B1100D00863 /* NewWorkoutView.swift */,
 				514929152A36556600D00863 /* ExerciseSelectionView.swift */,
 				513CE6BA2A3BB631009FCC44 /* AddOrRemoveExerciseView.swift */,
-				513CE6BC2A3BB79B009FCC44 /* AddOrRemoveExerciseViewViewModel.swift */,
 			);
 			path = Workout;
 			sourceTree = "<group>";
@@ -180,6 +179,7 @@
 		518F0F2B2A37F42700F625D3 /* Exercise View Models */ = {
 			isa = PBXGroup;
 			children = (
+				513CE6BC2A3BB79B009FCC44 /* AddOrRemoveExerciseViewViewModel.swift */,
 				5109A69C2A369FDA00DE4342 /* ExerciseViewViewModel.swift */,
 				5109A6A02A36A17700DE4342 /* NewExerciseViewViewModel.swift */,
 				510FB9F52A3801FC00D8839D /* EditExerciseViewViewModel.swift */,

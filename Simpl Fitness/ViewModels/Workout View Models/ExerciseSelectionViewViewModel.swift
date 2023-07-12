@@ -8,6 +8,7 @@
 import FirebaseAuth
 import FirebaseFirestore
 import Foundation
+import SwiftUI
 
 class ExerciseSelectionViewViewModel: ObservableObject{
     @Published var userId: String = ""
@@ -27,8 +28,6 @@ class ExerciseSelectionViewViewModel: ObservableObject{
         let newWorkout = Workout(
             id: newID,
             name: workoutName,
-            category: category,
-            exercises: Array(exercises),
             createdDate: Date().timeIntervalSince1970)
         
         
@@ -38,5 +37,15 @@ class ExerciseSelectionViewViewModel: ObservableObject{
             .collection("workouts")
             .document(newID)
             .setData(newWorkout.asDictionary())
+        
+        for exercise in exercises {
+            db.collection("users")
+                .document(getUserId())
+                .collection("workouts")
+                .document(newID)
+                .collection("exercises")
+                .document(exercise.id)
+                .setData(exercise.asDictionary())
+        }
     }
 }

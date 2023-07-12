@@ -11,23 +11,25 @@ import SwiftUI
 struct HomeView: View {
     @StateObject var viewModel: HomeViewViewModel
     @FirestoreQuery var items: [Workout]
-    @FirestoreQuery var exercises: [Exercise]
+    var userId: String
     
     init(userId: String){
         self._items = FirestoreQuery(collectionPath: "users/\(userId)/workouts")
-        self._exercises = FirestoreQuery(collectionPath: "users/\(userId)/exercises")
         self._viewModel = StateObject(wrappedValue: HomeViewViewModel(userId: userId))
+        self.userId = userId
     }
     
     var body: some View {
-        NavigationView{
+        NavigationStack{
             ZStack{
+                Color("CadetGrey")
+                    .ignoresSafeArea()
                 VStack{
                     Text("Workouts")
                         .font(.system(size: 36, weight: .bold))
                         .foregroundColor(Color("OxfordBlue"))
                     List(items){ item in
-                        NavigationLink(destination: WorkoutListItem(workout: item, exercises: item.exercises), label: {
+                        NavigationLink(destination: WorkoutListItem(userId: userId, workout: item), label: {
                             Text(item.name)
                                 .foregroundColor(Color("OxfordBlue"))
                                 .font(.system(size: 20))
@@ -43,27 +45,27 @@ struct HomeView: View {
                         }
                         .listRowBackground(Color("CadetGrey"))
                     }
-                    .listStyle(InsetListStyle())
                     .scrollContentBackground(.hidden)
-                    .navigationBarTitleDisplayMode(.inline)
-                    .toolbar{
-                        Button{
-                            //action
-                            viewModel.showingNewItemView = true
-                        } label: {
+                    .overlay(Group {
+                        if(items.isEmpty) {
+                            ZStack() {
+                                Color("CadetGrey").ignoresSafeArea()
+                                Text("No Workouts Created")
+                            }
+                        }
+                    })
+                    Spacer()
+                }
+                .scrollContentBackground(.hidden)
+                .toolbar{
+                    NavigationLink(destination: NewWorkoutView(userId: userId)){
                             Image(systemName: "plus")
                                 .foregroundColor(Color("LightCyan"))
-                        }
                     }
-                    .sheet(isPresented: $viewModel.showingNewItemView){
-                        NewWorkoutView(newItemPresented: $viewModel.showingNewItemView, exercises: exercises)
-                    }
-                    
                 }
             }
-            .background(Color("CadetGrey"))
-            
         }
+        .navigationBarBackButtonHidden(true)
     }
     
     struct HomeView_Previews: PreviewProvider {

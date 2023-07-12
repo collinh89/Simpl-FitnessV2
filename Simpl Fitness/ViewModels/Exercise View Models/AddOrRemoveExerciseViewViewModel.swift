@@ -19,6 +19,8 @@ class AddOrRemoveExerciseViewViewModel: ObservableObject {
             return
         }
         self.userId = uId
+        
+        self.getAllExercises()
     }
     func getCategories(){
         let categoryArr = self.allExercises.map {(exercise) -> String in
@@ -27,26 +29,21 @@ class AddOrRemoveExerciseViewViewModel: ObservableObject {
         self.categories = Set<String>(categoryArr)
     }
     
-    func addExercisesToWorkout(workout: Workout, exerciseToAdd: Exercise){
-        var exerciseList:[Exercise] = workout.exercises
-        exerciseList.append(exerciseToAdd)
-        
-        let updatedWorkout = Workout(
-            id: workout.id,
-            name: workout.name,
-            category: workout.category,
-            exercises: exerciseList,
-            createdDate: workout.createdDate
-        )
-        
+    func addExercisesToWorkout(workoutId: String, exerciseToAdd: Exercise){
+        let exerciseIdx = allExercises.firstIndex(of: exerciseToAdd) ?? -1
+        if(exerciseIdx != -1){
+            allExercises.remove(at: exerciseIdx)
+        }
         
         let db = Firestore.firestore()
-        
+
         db.collection("users")
             .document(userId)
             .collection("workouts")
-            .document(workout.id)
-            .setData(updatedWorkout.asDictionary())
+            .document(workoutId)
+            .collection("exercises")
+            .document(exerciseToAdd.id)
+            .setData(exerciseToAdd.asDictionary())
     }
     
     func getAllExercises(){
@@ -81,27 +78,16 @@ class AddOrRemoveExerciseViewViewModel: ObservableObject {
             }
     }
     
-    func delete(workout: Workout, exerciseRemoved: Exercise){
-        let removedExerciseIdx: Int = workout.exercises.firstIndex(of: exerciseRemoved) ?? -1
-        var exerciseList:[Exercise] = workout.exercises
-        exerciseList.remove(at: removedExerciseIdx)
-        
-        let updatedWorkout = Workout(
-            id: workout.id,
-            name: workout.name,
-            category: workout.category,
-            exercises: exerciseList,
-            createdDate: workout.createdDate
-        )
-        
-        
+    func delete(workoutId: String, exerciseRemoved: Exercise){
         let db = Firestore.firestore()
         
         db.collection("users")
             .document(userId)
             .collection("workouts")
-            .document(workout.id)
-            .setData(updatedWorkout.asDictionary())
+            .document(workoutId)
+            .collection("exercises")
+            .document(exerciseRemoved.id)
+            .delete()
     }
 }
 

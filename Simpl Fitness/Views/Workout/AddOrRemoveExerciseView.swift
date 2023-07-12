@@ -6,19 +6,34 @@
 //
 
 import SwiftUI
+import FirebaseFirestoreSwift
 
 struct AddOrRemoveExerciseView: View {
-    @StateObject var viewModel = AddOrRemoveExerciseViewViewModel()
+    @State private var readyToNavigate : Bool = false
+    @StateObject var viewModel: AddOrRemoveExerciseViewViewModel
+    @FirestoreQuery var exercises: [Exercise]
+    var workoutId: String
+    var userId: String
     
-    var workout: Workout
+    init(userId: String, workoutId: String){
+        self._exercises = FirestoreQuery(collectionPath: "users/\(userId)/workouts/\(workoutId)/exercises")
+        self._viewModel = StateObject(wrappedValue: AddOrRemoveExerciseViewViewModel())
+        self.workoutId = workoutId
+        self.userId = userId
+    }
     
     var body: some View {
+        NavigationStack{
             VStack(alignment: .center){
                 ScrollView{
                     Text("Current Exercises")
                         .font(.system(size: 36, weight: .bold))
                         .foregroundColor(Color("OxfordBlue"))
-                    ForEach(workout.exercises) { exercise in
+                    if(exercises.count == 0){
+                        Text("No Exercises Selected")
+                    }
+                    
+                    ForEach(exercises) { exercise in
                         ZStack {
                             RoundedRectangle(cornerRadius: 25, style: .continuous)
                                 .fill(Color("OxfordBlue"))
@@ -30,14 +45,14 @@ struct AddOrRemoveExerciseView: View {
                                     .padding()
                                 Spacer()
                                 Button{
-                                    viewModel.delete(workout: workout, exerciseRemoved: exercise)
+                                    viewModel.delete(workoutId: workoutId, exerciseRemoved: exercise)
                                 }label: {
                                     Image(systemName: "xmark")
                                 }
                                 .font(.system(size: 20, weight: .bold))
                                 .foregroundColor(.white)
                                 .padding()
-     
+                                
                             }
                         }
                         .frame(width: 400, height: 100)
@@ -61,14 +76,14 @@ struct AddOrRemoveExerciseView: View {
                                             .padding()
                                         Spacer()
                                         Button{
-                                            viewModel.addExercisesToWorkout(workout: workout, exerciseToAdd: exercise)
+                                            viewModel.addExercisesToWorkout(workoutId: workoutId, exerciseToAdd: exercise)
                                         }label: {
                                             Image(systemName: "plus.circle")
                                         }
                                         .font(.system(size: 20, weight: .bold))
                                         .foregroundColor(.white)
                                         .padding()
-             
+                                        
                                     }
                                 }
                                 .frame(width: 400, height: 100)
@@ -77,14 +92,24 @@ struct AddOrRemoveExerciseView: View {
                     }
                 }
             }
-            .onAppear{
-                viewModel.getAllExercises()
+            .navigationBarBackButtonHidden(true)
+            .toolbar {
+                Button {
+                    readyToNavigate = true
+                } label: {
+                    Text("Save Exercises")
+                }
+                .navigationDestination(isPresented: $readyToNavigate) {
+                    HomeView(userId: userId)
+                }
             }
         }
+    }
+    
 }
 
 struct AddOrRemoveExerciseView_Previews: PreviewProvider {
     static var previews: some View {
-        AddOrRemoveExerciseView(workout: Workout(id: "123", name: "Test Workout", category: "Test", exercises: [], createdDate: Date().timeIntervalSince1970))
+        AddOrRemoveExerciseView(userId: "cV7tqRdfbYb60rg5vFSrgDb47iG2", workoutId: "123")
     }
 }

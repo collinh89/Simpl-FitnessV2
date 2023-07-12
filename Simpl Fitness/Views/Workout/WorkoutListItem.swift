@@ -7,61 +7,54 @@
 
 import SwiftUI
 import SwiftUIReorderableForEach
+import FirebaseFirestoreSwift
 
 struct WorkoutListItem: View {
+    @FirestoreQuery var exercises: [Exercise]
     @StateObject var viewModel = WorkoutListItemViewModel()
-    var workout: Workout
-    @State private var isDone = false
     @State private var allowReordering = false
-    @State private var exercises: [Exercise]
+    var workout: Workout
+    var userId: String
     
-    init(workout: Workout, allowReordering: Bool = false, exercises: [Exercise]) {
+    init(userId: String, workout: Workout) {
+        self._exercises = FirestoreQuery(collectionPath: "users/\(userId)/workouts/\(workout.id)/exercises")
         self.workout = workout
-        self.allowReordering = allowReordering
-        self.exercises = workout.exercises
+        self.userId = userId
     }
     
     var body: some View {
-        NavigationView{
-            VStack{
-                ScrollView{
-                    HStack{
-                        Text(workout.name)
-                            .font(.system(size: 36, weight: .bold))
-                            .foregroundColor(.white)
-                            .padding()
-                        Spacer()
-                        Toggle("Reorder", isOn: $allowReordering)
-                            .onChange(of: allowReordering) { value in
-                                // action...
-                                if(value == false){
-                                    viewModel.UpdateExerciseOrder(exercises: exercises, workout: workout)
-                                }
-                                print(value)
-                            }
-                            .tint(Color("LightCyan"))
-                            .toggleStyle(SwitchToggleStyle())
-                            .labelsHidden()
+        NavigationStack{
+            ZStack{
+                Color("CadetGrey")
+                    .ignoresSafeArea()
+                VStack{
+                    ScrollView{
+
+                        ForEach(exercises) {exercise in
+                            ExerciseCard(exercise: exercise, fromWorkoutList: true)
+                        }
                     }
-                    ReorderableForEach($exercises, allowReordering: $allowReordering){ exercise,isDragged  in
-                        ExerciseCard(exercise: exercise, fromWorkoutList: true)
-                    }
+                    Spacer()
                 }
-                Spacer()
+                .toolbar{
+                        Text(workout.name)
+                            .font(.system(size: 30, weight: .bold))
+                            .foregroundColor(.white)
+                        Spacer()
+                        NavigationLink(destination: AddOrRemoveExerciseView(userId: userId, workoutId: workout.id), label: {
+                            Image(systemName: "square.and.pencil")
+                                .foregroundColor(.white)
+                        })
+                    }
+                .toolbarBackground(Color("CadetGrey"), for: .navigationBar)
+                .toolbarBackground(.visible, for: .navigationBar)
             }
-            .background(Color("CadetGrey"))
-        }
-        .toolbar{
-            NavigationLink(destination: AddOrRemoveExerciseView(workout: workout), label: {
-                Image(systemName: "square.and.pencil")
-                    .foregroundColor(.white)
-            })
         }
     }
 }
 
 struct WorkoutListItem_Previews: PreviewProvider {
     static var previews: some View {
-        WorkoutListItem(workout: Workout(id: "123", name: "Test Workout",category: "Chest", exercises: [], createdDate: Date().timeIntervalSince1970), exercises: [])
+        WorkoutListItem(userId: "cV7tqRdfbYb60rg5vFSrgDb47iG2", workout: Workout(id: "123", name: "Test Workout",  createdDate: Date().timeIntervalSince1970))
     }
 }

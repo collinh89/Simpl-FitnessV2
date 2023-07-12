@@ -12,7 +12,7 @@ import Foundation
 class EditExerciseViewViewModel: ObservableObject{
     private var userId = ""
     private var exerciseId = ""
-
+    
     @Published var name = ""
     @Published var category = ""
     @Published var weight = 0
@@ -37,12 +37,12 @@ class EditExerciseViewViewModel: ObservableObject{
     
     func updateExercise(){
         let exerciseToUpdate = Exercise(
-             id: exerciseId,
-             name: name,
-             weight: weight,
-             sets: sets,
-             reps: reps,
-             category: category
+            id: exerciseId,
+            name: name,
+            weight: weight,
+            sets: sets,
+            reps: reps,
+            category: category
         )
         let db = Firestore.firestore()
         db.collection("users")
@@ -51,5 +51,4 @@ class EditExerciseViewViewModel: ObservableObject{
             .document(self.exerciseId)
             .setData(exerciseToUpdate.asDictionary())
     }
-
 }

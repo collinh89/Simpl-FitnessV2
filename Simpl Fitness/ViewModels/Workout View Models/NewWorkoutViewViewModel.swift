@@ -11,14 +11,26 @@ import Foundation
 class NewWorkoutViewViewModel: ObservableObject {
     @Published var userId = ""
     @Published var name = ""
-    @Published var category = ""
-    @Published var exercises: [Exercise] = []
     @Published var showAlert = false
+    @Published var workoutId = ""
     
     init(){
         guard let uId = Auth.auth().currentUser?.uid else {
             return
         }
         self.userId = uId
+    }
+    
+    func saveWorkout(){
+        let newID = UUID().uuidString
+        let newWorkout = Workout(id: newID, name: name, createdDate: Date().timeIntervalSince1970)
+        let db = Firestore.firestore()
+    
+        db.collection("users")
+            .document(userId)
+            .collection("workouts")
+            .document(newID)
+            .setData(newWorkout.asDictionary())
+        workoutId = newID
     }
 }

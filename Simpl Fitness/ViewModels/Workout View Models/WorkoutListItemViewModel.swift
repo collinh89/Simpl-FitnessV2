@@ -22,8 +22,6 @@ class WorkoutListItemViewModel: ObservableObject{
         let updateWorkout = Workout(
             id: workout.id,
             name: workout.name,
-            category: workout.category,
-            exercises: exercises,
             createdDate: workout.createdDate)
         
         
