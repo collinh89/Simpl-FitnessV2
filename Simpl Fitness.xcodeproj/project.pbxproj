@@ -65,6 +65,7 @@
 
 /* Begin PBXFileReference section */
 		190AEAE42A55BFA100D25654 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		1927EEA82A5F0B000095BB4F /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		5109A6962A368A4600DE4342 /* WorkoutListItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutListItem.swift; sourceTree = "<group>"; };
 		5109A6982A36967B00DE4342 /* ExerciseCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseCard.swift; sourceTree = "<group>"; };
 		5109A69A2A369EAA00DE4342 /* ExerciseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseView.swift; sourceTree = "<group>"; };
@@ -218,6 +219,7 @@
 		51CEB6052A327FF200C06121 /* Simpl Fitness */ = {
 			isa = PBXGroup;
 			children = (
+				1927EEA82A5F0B000095BB4F /* GoogleService-Info.plist */,
 				51CEB63E2A3283F700C06121 /* Views */,
 				51CEB63D2A3283EA00C06121 /* ViewModels */,
 				51CEB63C2A3283DE00C06121 /* Models */,

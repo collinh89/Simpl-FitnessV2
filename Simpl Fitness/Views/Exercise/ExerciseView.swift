@@ -19,11 +19,13 @@ struct ExerciseView: View {
     var body: some View {
         NavigationView{
             ZStack{
+                Color("CadetGrey")
+                    .ignoresSafeArea()
                 VStack{
                     ScrollView{
                         Text("Exercises")
                             .font(.system(size: 36, weight: .bold))
-                            .foregroundColor(.white)
+                            .foregroundColor(Color("OxfordBlue"))
                         ForEach(viewModel.categories.sorted(), id: \.self){ item in
                             Section(){
                                 Text(item)
@@ -45,9 +47,6 @@ struct ExerciseView: View {
                                 }
                             }
                             .listStyle(InsetListStyle())
-                            .sheet(isPresented: $viewModel.showingNewItemView){
-                                NewExerciseView(newItemPresented: $viewModel.showingNewItemView)
-                            }
                             Spacer()
                         }
                     }
@@ -64,7 +63,11 @@ struct ExerciseView: View {
             }
             .toolbarBackground(Color("CadetGrey"), for: .navigationBar)
             .background(Color("CadetGrey"))
-        }.onAppear{
+        }
+        .sheet(isPresented: $viewModel.showingNewItemView){
+            NewExerciseView(newItemPresented: $viewModel.showingNewItemView)
+        }
+        .onAppear{
             viewModel.getCategories(exercises: items)
         }
     }
