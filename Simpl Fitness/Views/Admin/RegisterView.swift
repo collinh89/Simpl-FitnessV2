@@ -8,10 +8,13 @@
 import SwiftUI
 
 struct RegisterView: View {
-
     @StateObject var viewModel = RegisterViewViewModel()
     var body: some View {
         VStack{
+            Image("SF Logo")
+                .resizable()
+                .aspectRatio(contentMode: .fit)
+            
             Form{
                 TextField("Full Name", text: $viewModel.name)
                     .textFieldStyle(DefaultTextFieldStyle())
@@ -22,15 +25,19 @@ struct RegisterView: View {
                     .autocorrectionDisabled()
                 SecureField("Password", text: $viewModel.password)
                     .textFieldStyle(DefaultTextFieldStyle())
-                Button("Register"){
-                    viewModel.register()
-                }
             }
-            .offset(y:-50)
-            
-
+    
             Spacer()
+            Button("Register"){
+                viewModel.register()
+            }
+            .frame(maxWidth: 200, alignment: .center).padding()
+            .foregroundColor(Color("OxfordBlue"))
+            .background(Color("LightBlue")).cornerRadius(5)
         }
+        .scrollContentBackground(.hidden)
+        .foregroundColor(Color("CadetGrey"))
+        .background(Color("OxfordBlue"))
     }
 }
 
