@@ -11,50 +11,58 @@ struct ProfileView: View {
     @StateObject var viewModel = ProfileViewViewModel()
     var body: some View {
         NavigationView{
-            VStack{
-
-                if let user = viewModel.user {
-                    profile(user: user)
-                } else{
-                    Text("Loading Profile ...")
+            ZStack{
+                Color("CadetGrey")
+                    .ignoresSafeArea()
+                VStack{
+                    if let user = viewModel.user {
+                        profile(user: user)
+                    } else{
+                        Text("Loading Profile ...")
+                    }
                 }
+                .foregroundColor(Color("OxfordBlue"))
             }
-            .navigationTitle("Profile")
         }
         .onAppear{
             viewModel.fetchUser()
         }
     }
     @ViewBuilder func profile(user: User) -> some View{
-        Image(systemName: "person.circle")
+//        Image(systemName: "person.circle")
+//            .resizable()
+//            .aspectRatio(contentMode: .fit)
+//            .foregroundColor((Color("OxfordBlue")))
+//            .frame(width: 125, height: 125)
+//            .padding()
+        Image("SF Logo Blue")
             .resizable()
             .aspectRatio(contentMode: .fit)
-            .foregroundColor(.blue)
-            .frame(width: 125, height: 125)
-            .padding()
         
-        VStack(alignment: .leading){
-            HStack{
-                Text("Name:")
-                Text(user.name)
-            }
-            HStack{
-                Text("Email:")
-                Text(user.email)
-            }
-            HStack{
-                Text("Member Since:")
-                Text("\(Date(timeIntervalSince1970: user.joined).formatted(date: .abbreviated, time: .shortened))")
-            }
+        VStack(alignment: .center){
+            Text(user.name)
+                .font(.title2)
+                .padding()
+            
+            Text(user.email)
+                .font(.title2)
+                .padding()
+            
+            Text("\(Date(timeIntervalSince1970: user.joined).formatted(date: .abbreviated, time: .shortened))")
+                .font(.title2)
+                .padding()
+            
+            
         }
-        .padding()
-        
+        Spacer()
         Button("Logout"){
             viewModel.logout()
         }
         .tint(.red)
+        .frame(maxWidth: 200, alignment: .center).padding()
+        .foregroundColor(Color("OxfordBlue"))
+        .background(Color("LightBlue")).cornerRadius(5)
         .padding()
-        
         Spacer()
     }
 }
