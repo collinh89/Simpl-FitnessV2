@@ -12,7 +12,6 @@ import FirebaseFirestoreSwift
 struct WorkoutListItem: View {
     @FirestoreQuery var exercises: [Exercise]
     @StateObject var viewModel = WorkoutListItemViewModel()
-    @State private var allowReordering = false
     var workout: Workout
     var userId: String
     
@@ -28,8 +27,11 @@ struct WorkoutListItem: View {
                 Color("CadetGrey")
                     .ignoresSafeArea()
                 VStack{
-                    ScrollView{
-
+                    ScrollView{                        Text(workout.name)
+                            .font(.system(size: 25, weight: .bold))
+                            .foregroundColor(.white)
+                            .padding()
+                        Spacer()
                         ForEach(exercises) {exercise in
                             ExerciseCard(exercise: exercise, fromWorkoutList: true)
                         }
@@ -37,9 +39,6 @@ struct WorkoutListItem: View {
                     Spacer()
                 }
                 .toolbar{
-                        Text(workout.name)
-                            .font(.system(size: 30, weight: .bold))
-                            .foregroundColor(.white)
                         Spacer()
                         NavigationLink(destination: AddOrRemoveExerciseView(userId: userId, workoutId: workout.id), label: {
                             Image(systemName: "square.and.pencil")
