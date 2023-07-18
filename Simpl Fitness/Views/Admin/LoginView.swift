@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct LoginView: View {
-@StateObject var viewModel = LoginViewViewModel()
+    @StateObject var viewModel = LoginViewViewModel()
     
     init(){
         UITableView.appearance().backgroundColor = .clear
@@ -35,13 +35,14 @@ struct LoginView: View {
                         SecureField("Password", text: $viewModel.password)
                             .textFieldStyle(DefaultTextFieldStyle())
                     }
-                    Section{
-                        Button("Login"){
-                            viewModel.login()
-                        }
-                    }
                 }
-                .foregroundColor(Color.blue)
+                Button("Login"){
+                    viewModel.login()
+                }
+                .frame(maxWidth: 200, alignment: .center).padding()
+                .foregroundColor(Color("OxfordBlue"))
+                .background(Color("LightBlue")).cornerRadius(5)
+                Spacer()
                 //create account
                 VStack{
                     Text("New Around Here?")
