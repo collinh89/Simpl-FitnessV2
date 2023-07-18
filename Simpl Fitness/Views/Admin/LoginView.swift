@@ -9,34 +9,50 @@ import SwiftUI
 
 struct LoginView: View {
 @StateObject var viewModel = LoginViewViewModel()
+    
+    init(){
+        UITableView.appearance().backgroundColor = .clear
+    }
+    
     var body: some View {
         NavigationView {
             VStack{
+                //SF Logo
+                Image("SF Logo")
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
                 //login form
                 Form {
-                    if !viewModel.errorMsg.isEmpty{
-                        Text(viewModel.errorMsg)
-                            .foregroundColor(Color.red)
+                    Section{
+                        if !viewModel.errorMsg.isEmpty{
+                            Text(viewModel.errorMsg)
+                                .foregroundColor(Color.red)
+                        }
+                        TextField("Email Address", text: $viewModel.email)
+                            .textFieldStyle(DefaultTextFieldStyle())
+                            .autocapitalization(.none)
+                            .autocorrectionDisabled()
+                        SecureField("Password", text: $viewModel.password)
+                            .textFieldStyle(DefaultTextFieldStyle())
                     }
-                    TextField("Email Address", text: $viewModel.email)
-                        .textFieldStyle(DefaultTextFieldStyle())
-                        .autocapitalization(.none)
-                        .autocorrectionDisabled()
-                    SecureField("Password", text: $viewModel.password)
-                        .textFieldStyle(DefaultTextFieldStyle())
-                    Button("Login"){
-                        viewModel.login()
+                    Section{
+                        Button("Login"){
+                            viewModel.login()
+                        }
                     }
                 }
-                .offset(y:-50)
+                .foregroundColor(Color.blue)
                 //create account
                 VStack{
                     Text("New Around Here?")
                     NavigationLink("Create An Account",destination: RegisterView())
                 }
-                .padding(.bottom, 50)
+                .padding()
                 Spacer()
             }
+            .scrollContentBackground(.hidden)
+            .foregroundColor(Color("CadetGrey"))
+            .background(Color("OxfordBlue"))
         }
     }
 }
