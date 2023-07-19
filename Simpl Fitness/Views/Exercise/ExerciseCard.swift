@@ -9,6 +9,7 @@ import SwiftUI
 
 struct ExerciseCard: View {
     var exercise: Exercise
+    
     var fromWorkoutList = false
     var onSelectionPage = false
     @State var isExpanded = true

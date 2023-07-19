@@ -15,7 +15,7 @@ struct AddOrRemoveExerciseView: View {
     @FirestoreQuery var exercises: [Exercise]
     var workoutId: String
     var userId: String
-
+    
     init(userId: String, workoutId: String){
         self._exercises = FirestoreQuery(collectionPath: "users/\(userId)/workouts/\(workoutId)/exercises")
         self._viewModel = StateObject(wrappedValue: AddOrRemoveExerciseViewViewModel())

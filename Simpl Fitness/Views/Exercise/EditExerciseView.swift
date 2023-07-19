@@ -9,6 +9,9 @@ import FirebaseFirestoreSwift
 import SwiftUI
 
 struct EditExerciseView: View {
+    @Environment(\.presentationMode) var presentationMode
+
+    @State private var readyToNavigate : Bool = false
     @StateObject var viewModel = EditExerciseViewViewModel()
     @State var isExpanded = false
 
@@ -45,6 +48,8 @@ struct EditExerciseView: View {
             Button{
                 //action
                 viewModel.updateExercise()
+                presentationMode.wrappedValue.dismiss()
+
             } label: {
                 Text("Update")
             }
@@ -52,6 +57,7 @@ struct EditExerciseView: View {
     }
         .onAppear{
             viewModel.setExercise(exercise: exercise)
+            viewModel.getWorkouts()
         }
     }
 }
