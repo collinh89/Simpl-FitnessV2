@@ -10,13 +10,14 @@ import FirebaseFirestore
 import Foundation
 
 class EditExerciseViewViewModel: ObservableObject{
-    private var userId = ""
+    
     private var exerciseId = ""
     private var workouts: [Workout] = []
     
+    @Published var userId = ""
     @Published var name = ""
     @Published var category = ""
-    @Published var weight = 0
+    @Published var weight = ""
     @Published var reps = ""
     @Published var sets = ""
     @Published var showAlert = false

@@ -11,18 +11,21 @@ struct NewExerciseView: View {
     @StateObject var viewModel = NewExerciseViewViewModel()
     @Binding var newItemPresented: Bool
     @State private var selection = "Abs"
-    @State private var categories = [
+    @State private var categoriesSection1 = [
         "Abs",
         "Chest",
         "Legs",
-        "Shoulders",
+        "Shoulders"
+    ]
+    @State private var categoriesSection2 = [
         "Tricepts",
         "Bicepts",
+        "Forearms",
         "Back"
     ]
 
     var body: some View {
-        NavigationView{
+        NavigationStack{
             VStack{
                 Text("New Exercise")
                     .font(.system(size: 32))
@@ -36,22 +39,26 @@ struct NewExerciseView: View {
                     
                     //Category
                     VStack{
+                        Text("Select Category")
                         Picker("\(selection)", selection: $selection) {
-                            ForEach(categories, id: \.self) {
+                            ForEach(categoriesSection1, id: \.self) {
                                 Text($0)
                             }
                         }
                         .labelsHidden()
-                        .pickerStyle(MenuPickerStyle())
-                        
+                        .pickerStyle(SegmentedPickerStyle())
+                        Picker("\(selection)", selection: $selection) {
+                            ForEach(categoriesSection2, id: \.self) {
+                                Text($0)
+                            }
+                        }
+                        .labelsHidden()
+                        .pickerStyle(SegmentedPickerStyle())
+
                     }
 
-//                    TextField("Category", text: $viewModel.category)
-//                        .textFieldStyle(DefaultTextFieldStyle())
-
                     //Weight
-                    TextField("Weight", value: $viewModel.weight, formatter: NumberFormatter())
-                        .keyboardType(.numberPad)
+                    TextField("Weight", text: $viewModel.weight)
                         .textFieldStyle(DefaultTextFieldStyle())
 
                     //Sets
@@ -61,22 +68,29 @@ struct NewExerciseView: View {
                     //Reps
                     TextField("Reps", text: $viewModel.reps)
                         .textFieldStyle(DefaultTextFieldStyle())
-                    
-                    //button
-                    Button{
-                        //action
-                        viewModel.category = selection
-                        viewModel.saveExercise()
-                        newItemPresented = false
-                    } label: {
-                        Text("Save")
-                    }
-                    
                 }
                 .alert(isPresented: $viewModel.showAlert){
                     Alert(title: Text("Error"), message: Text("Please fill in all field and select a due date"))
                 }
+                
+                //button
+                Button{
+                    //action
+                    viewModel.category = selection
+                    viewModel.saveExercise()
+                    newItemPresented = false
+                } label: {
+                    Text("Save")
+                }
+                .frame(maxWidth: 300, alignment: .center).padding()
+                .foregroundColor(Color("OxfordBlue"))
+                .background(Color("LightBlue")).cornerRadius(5)
+                .padding(.bottom, 50)
+                
         }
+            .scrollContentBackground(.hidden)
+            .foregroundColor(Color("CadetGrey"))
+            .background(Color("OxfordBlue"))
         }
     }
 }

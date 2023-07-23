@@ -8,6 +8,8 @@ import FirebaseFirestoreSwift
 import SwiftUI
 
 struct NewWorkoutView: View {
+    @Environment(\.presentationMode) var presentationMode
+
     @State private var readyToNavigate : Bool = false
     @StateObject var viewModel: NewWorkoutViewViewModel
     @FirestoreQuery var exercises: [Exercise]
@@ -26,42 +28,71 @@ struct NewWorkoutView: View {
     var body: some View {
         NavigationStack{
             VStack{
+                //SF Logo
+                Image("SF Logo")
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
                 Form {
                     Section{
                         //Name
                         TextField("Give your new workout a name", text: $viewModel.name)
                             .textFieldStyle(DefaultTextFieldStyle())
                     } header: {
-                        Text("Workout Details")
-                    }
-                    
-                    Section{
-                        Button {
-                            viewModel.saveWorkout()
-                            readyToNavigate = true
-                        } label: {
-                            Text("Select Exercises")
+                        HStack(alignment: .center){
+                            Spacer()
+                            Text("Workout Details")
+                                .font(.system(size: 15))
+                            Spacer()
                         }
-                        .navigationDestination(isPresented: $readyToNavigate) {
-                            AddOrRemoveExerciseView(userId: userId, workoutId: viewModel.workoutId)
-                        }
-                        
                     }
                 }
                 .navigationBarTitleDisplayMode(.inline)
                 .toolbar {
-                    ToolbarItem(placement: .principal) {
-                            Text("New Workout")
-                                .foregroundColor(Color("OxfordBlue"))
-                                .font(.system(size: 30))
-                                .bold()
+                        ToolbarItem(placement: .principal) {
+                            VStack{
+                                HStack{
+                                    Button{
+                                        //action
+                                        presentationMode.wrappedValue.dismiss()
+
+                                    } label: {
+                                        Text("Back")
+                                    }
+                                    Spacer()
+                                }
+                                .padding(.top, 40)
+                                
+                                Text("New Workout")
+                                    .foregroundColor(Color("LightBlue"))
+                                    .font(.system(size: 40))
+                                    .bold()
+                                    .padding(.top, 10)
+                        }
                     }
                 }
                 .padding(.top, 40)
+                
+                Button {
+                    viewModel.saveWorkout()
+                    readyToNavigate = true
+                } label: {
+                    Text("Select Exercises")
+                }
+                .navigationDestination(isPresented: $readyToNavigate) {
+                    AddOrRemoveExerciseView(userId: userId, workoutId: viewModel.workoutId)
+                }
+                .frame(maxWidth: 300, alignment: .center).padding()
+                .foregroundColor(Color("OxfordBlue"))
+                .background(Color("LightBlue")).cornerRadius(5)
+                
+                Spacer()
             }
+            .scrollContentBackground(.hidden)
+            .foregroundColor(Color("CadetGrey"))
+            .background(Color("OxfordBlue"))
         }
         .navigationBarBackButtonHidden(true)
-
+        
     }
 }
 

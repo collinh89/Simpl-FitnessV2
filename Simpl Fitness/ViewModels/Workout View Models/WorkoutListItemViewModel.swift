@@ -18,7 +18,6 @@ class WorkoutListItemViewModel: ObservableObject{
         return userId;
     }
     func UpdateExerciseOrder(exercises: [Exercise], workout: Workout){
-        print(exercises)
         let updateWorkout = Workout(
             id: workout.id,
             name: workout.name,

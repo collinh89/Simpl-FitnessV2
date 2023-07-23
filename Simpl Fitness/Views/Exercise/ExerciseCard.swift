@@ -87,7 +87,9 @@ struct ExerciseCard: View {
         }
         .transition(.move(edge: .bottom))
         .frame(maxWidth: .infinity, alignment: .center)
-        .background(isDone ? Color("LightCyan") : Color("OxfordBlue"))
+        .background(isDone ?         LinearGradient(gradient: Gradient(colors: [Color("LightCyan"), Color("LightBlue")]), startPoint: .top, endPoint: .bottom)
+ :         LinearGradient(gradient: Gradient(colors: [Color("LightCyan"), Color("OxfordBlue")]), startPoint: .top, endPoint: .bottom)
+)
         .modifier(CardModifier())
         .padding(.all, 10)
     }
@@ -103,6 +105,6 @@ struct CardModifier: ViewModifier {
 }
 struct ExerciseCard_Previews: PreviewProvider {
     static var previews: some View {
-        ExerciseCard(exercise: Exercise(id: "123", name: "Dumbbell Bench Press", weight: 50, sets: "2", reps: "8", category: "Chest"), fromWorkoutList: false, onSelectionPage: true)
+        ExerciseCard(exercise: Exercise(id: "123", name: "Dumbbell Bench Press", weight: "50", sets: "2", reps: "8", category: "Chest"), fromWorkoutList: false, onSelectionPage: true)
     }
 }

@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		199506C72A5F459D00E696D4 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 199506C62A5F459D00E696D4 /* GoogleService-Info.plist */; };
+		19ED6E1A2A68D24A00BFB321 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19ED6E192A68D24A00BFB321 /* LoadingView.swift */; };
 		5109A6972A368A4600DE4342 /* WorkoutListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5109A6962A368A4600DE4342 /* WorkoutListItem.swift */; };
 		5109A6992A36967B00DE4342 /* ExerciseCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5109A6982A36967B00DE4342 /* ExerciseCard.swift */; };
 		5109A69B2A369EAA00DE4342 /* ExerciseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5109A69A2A369EAA00DE4342 /* ExerciseView.swift */; };
@@ -24,7 +25,6 @@
 		514929102A364B5100D00863 /* NewWorkoutViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5149290F2A364B5100D00863 /* NewWorkoutViewViewModel.swift */; };
 		514929122A364BBA00D00863 /* Workout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 514929112A364BBA00D00863 /* Workout.swift */; };
 		514929142A364C2500D00863 /* Exercise.swift in Sources */ = {isa = PBXBuildFile; fileRef = 514929132A364C2500D00863 /* Exercise.swift */; };
-		514929162A36556600D00863 /* ExerciseSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 514929152A36556600D00863 /* ExerciseSelectionView.swift */; };
 		514929182A3655DD00D00863 /* ExerciseSelectionViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 514929172A3655DD00D00863 /* ExerciseSelectionViewViewModel.swift */; };
 		51CEB6072A327FF200C06121 /* Simpl_FitnessApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51CEB6062A327FF200C06121 /* Simpl_FitnessApp.swift */; };
 		51CEB6092A327FF200C06121 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51CEB6082A327FF200C06121 /* MainView.swift */; };
@@ -65,6 +65,7 @@
 
 /* Begin PBXFileReference section */
 		199506C62A5F459D00E696D4 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "Simpl Fitness/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		19ED6E192A68D24A00BFB321 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		5109A6962A368A4600DE4342 /* WorkoutListItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutListItem.swift; sourceTree = "<group>"; };
 		5109A6982A36967B00DE4342 /* ExerciseCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseCard.swift; sourceTree = "<group>"; };
 		5109A69A2A369EAA00DE4342 /* ExerciseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseView.swift; sourceTree = "<group>"; };
@@ -80,7 +81,6 @@
 		5149290F2A364B5100D00863 /* NewWorkoutViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewWorkoutViewViewModel.swift; sourceTree = "<group>"; };
 		514929112A364BBA00D00863 /* Workout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Workout.swift; sourceTree = "<group>"; };
 		514929132A364C2500D00863 /* Exercise.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Exercise.swift; sourceTree = "<group>"; };
-		514929152A36556600D00863 /* ExerciseSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseSelectionView.swift; sourceTree = "<group>"; };
 		514929172A3655DD00D00863 /* ExerciseSelectionViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseSelectionViewViewModel.swift; sourceTree = "<group>"; };
 		51CEB6032A327FF200C06121 /* Simpl Fitness.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Simpl Fitness.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		51CEB6062A327FF200C06121 /* Simpl_FitnessApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Simpl_FitnessApp.swift; sourceTree = "<group>"; };
@@ -138,7 +138,6 @@
 				5109A6962A368A4600DE4342 /* WorkoutListItem.swift */,
 				51CEB6432A3284CD00C06121 /* HomeView.swift */,
 				5149290D2A364B1100D00863 /* NewWorkoutView.swift */,
-				514929152A36556600D00863 /* ExerciseSelectionView.swift */,
 				513CE6BA2A3BB631009FCC44 /* AddOrRemoveExerciseView.swift */,
 			);
 			path = Workout;
@@ -161,6 +160,7 @@
 				51CEB6472A3286B200C06121 /* LoginView.swift */,
 				51CEB6492A32872E00C06121 /* RegisterView.swift */,
 				51CEB6532A328B7200C06121 /* ProfileView.swift */,
+				19ED6E192A68D24A00BFB321 /* LoadingView.swift */,
 			);
 			path = Admin;
 			sourceTree = "<group>";
@@ -427,7 +427,6 @@
 				51CEB6522A32881F00C06121 /* LoginViewViewModel.swift in Sources */,
 				514929182A3655DD00D00863 /* ExerciseSelectionViewViewModel.swift in Sources */,
 				51CEB6482A3286B200C06121 /* LoginView.swift in Sources */,
-				514929162A36556600D00863 /* ExerciseSelectionView.swift in Sources */,
 				5109A69F2A36A12400DE4342 /* NewExerciseView.swift in Sources */,
 				514929142A364C2500D00863 /* Exercise.swift in Sources */,
 				5109A6992A36967B00DE4342 /* ExerciseCard.swift in Sources */,
@@ -444,6 +443,7 @@
 				51CEB64A2A32872E00C06121 /* RegisterView.swift in Sources */,
 				51CEB6502A3287C000C06121 /* Extensions.swift in Sources */,
 				51CEB64E2A32879400C06121 /* User.swift in Sources */,
+				19ED6E1A2A68D24A00BFB321 /* LoadingView.swift in Sources */,
 				510FB9F62A3801FC00D8839D /* EditExerciseViewViewModel.swift in Sources */,
 				51CEB6442A3284CD00C06121 /* HomeView.swift in Sources */,
 				5109A69B2A369EAA00DE4342 /* ExerciseView.swift in Sources */,
@@ -533,6 +533,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = NO;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -585,6 +586,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = NO;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SWIFT_COMPILATION_MODE = wholemodule;

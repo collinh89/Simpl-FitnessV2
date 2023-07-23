@@ -13,7 +13,7 @@ class NewExerciseViewViewModel:ObservableObject{
     private var userId = ""
     @Published var name = ""
     @Published var category = ""
-    @Published var weight = 0
+    @Published var weight = ""
     @Published var reps = ""
     @Published var sets = ""
     @Published var showAlert = false
@@ -35,7 +35,6 @@ class NewExerciseViewViewModel:ObservableObject{
              reps: reps,
              category: category
         )
-        print(newExercise)
         let db = Firestore.firestore()
         db.collection("users")
             .document(self.userId)

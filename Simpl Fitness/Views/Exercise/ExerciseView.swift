@@ -9,13 +9,11 @@ import SwiftUI
 
 struct ExerciseView: View {
     @StateObject var viewModel: ExerciseViewViewModel
-    @FirestoreQuery var items: [Exercise]
     
     init(userId: String){
-        self._items = FirestoreQuery(collectionPath: "users/\(userId)/exercises")
         self._viewModel = StateObject(wrappedValue: ExerciseViewViewModel(userId: userId))
     }
-
+    
     var body: some View {
         NavigationView{
             ZStack{
@@ -26,6 +24,7 @@ struct ExerciseView: View {
                         Text("Exercises")
                             .font(.system(size: 36, weight: .bold))
                             .foregroundColor(Color("OxfordBlue"))
+                        
                         ForEach(viewModel.categories.sorted(), id: \.self){ item in
                             Section(){
                                 Text(item)
@@ -34,7 +33,7 @@ struct ExerciseView: View {
                                     .foregroundColor(.white)
                                     .padding()
                                 
-                                ForEach(items.filter{$0.category == item}){ item in
+                                ForEach(viewModel.exercises.filter{$0.category == item}){ item in
                                     ExerciseCard(exercise: item)
                                         .swipeActions(edge: .trailing){
                                             Button("Delete"){
@@ -54,6 +53,14 @@ struct ExerciseView: View {
                 .toolbar{
                     Button{
                         //action
+                        viewModel.getExercises()
+                    } label: {
+                        Image(systemName: "gobackward")
+                            .foregroundColor(Color("LightCyan"))
+                    }
+                    Spacer().padding(.trailing, 298)
+                    Button{
+                        //action
                         viewModel.showingNewItemView = true
                     } label: {
                         Image(systemName: "plus")
@@ -66,16 +73,19 @@ struct ExerciseView: View {
         }
         .sheet(isPresented: $viewModel.showingNewItemView){
             NewExerciseView(newItemPresented: $viewModel.showingNewItemView)
+                .onDisappear{
+                    viewModel.getExercises()
+                }
         }
         .onAppear{
-            viewModel.getCategories(exercises: items)
+            viewModel.getExercises()
         }
     }
     
     
     struct ExerciseView_Previews: PreviewProvider {
         static var previews: some View {
-            ExerciseView(userId: "cV7tqRdfbYb60rg5vFSrgDb47iG2")
+            ExerciseView(userId: "eNVQVVMOINhyq3EFLTvMCiCz1aY2")
         }
     }
 }

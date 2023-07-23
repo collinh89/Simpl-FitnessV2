@@ -70,7 +70,7 @@ struct HomeView: View {
     
     struct HomeView_Previews: PreviewProvider {
         static var previews: some View {
-            HomeView(userId: "cV7tqRdfbYb60rg5vFSrgDb47iG2")
+            HomeView(userId: "eNVQVVMOINhyq3EFLTvMCiCz1aY2")
         }
     }
 }

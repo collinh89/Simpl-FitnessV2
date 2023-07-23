@@ -59,7 +59,7 @@ class AddOrRemoveExerciseViewViewModel: ObservableObject {
                     for document in querySnapshot!.documents {
                         let id  = document.data()["id"] as? String ?? ""
                         let name  = document.data()["name"] as? String ?? ""
-                        let weight  = document.data()["weight"] as? Int ?? 0
+                        let weight  = document.data()["weight"] as? String ?? ""
                         let sets  = document.data()["sets"] as? String ?? ""
                         let reps  = document.data()["reps"] as? String ?? ""
                         let category  = document.data()["category"] as? String ?? ""

@@ -14,6 +14,7 @@ struct MainView: View {
         if viewModel.isSignedIn, !viewModel.currentUserId.isEmpty{
             //signed in
             accountView
+                .colorScheme(.light)
         
         }else{
             LoginView()
