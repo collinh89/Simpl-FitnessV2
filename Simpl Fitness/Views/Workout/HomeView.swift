@@ -9,15 +9,20 @@ import FirebaseFirestoreSwift
 import SwiftUI
 
 struct HomeView: View {
+    @State private var readyToNavigate : Bool = false
+    @State private var workoutIdTodelete : String = ""
+
     @StateObject var viewModel: HomeViewViewModel
-    @FirestoreQuery var items: [Workout]
+    @FirestoreQuery var workouts: [Workout]
+    @State var showingAlert: Bool = false
     var userId: String
     
     init(userId: String){
-        self._items = FirestoreQuery(collectionPath: "users/\(userId)/workouts")
+        self._workouts = FirestoreQuery(collectionPath: "users/\(userId)/workouts")
         self._viewModel = StateObject(wrappedValue: HomeViewViewModel(userId: userId))
         self.userId = userId
     }
+    let columns = [GridItem(.flexible()), GridItem(.flexible())]
     
     var body: some View {
         NavigationStack{
@@ -28,39 +33,38 @@ struct HomeView: View {
                     Text("Workouts")
                         .font(.system(size: 36, weight: .bold))
                         .foregroundColor(Color("OxfordBlue"))
-                    List(items){ item in
-                        NavigationLink(destination: WorkoutListItem(userId: userId, workout: item), label: {
-                            Text(item.name)
-                                .foregroundColor(Color("OxfordBlue"))
-                                .font(.system(size: 20))
-                                .bold()
-                                .padding()
-                        })
-                        .swipeActions{
-                            Button("Delete"){
-                                //action here
-                                viewModel.delete(id: item.id)
+                    
+                    ScrollView{
+                        LazyVGrid(columns: columns, spacing: 20) {
+                            ForEach(workouts) { workout in
+                                WorkoutCard(workout: workout)
+                                    .onTapGesture {
+                                        readyToNavigate = true
+                                    }
+                                    .navigationDestination(isPresented: $readyToNavigate) {
+                                        WorkoutListItem(userId: userId, workout: workout)
+                                    }
+                                    .onLongPressGesture {
+                                        showingAlert = true
+                                        workoutIdTodelete = workout.id
+                                    }
                             }
-                            .tint(Color.red)
+                            .padding(.horizontal)
                         }
-                        .listRowBackground(Color("CadetGrey"))
+                        Spacer()
                     }
-                    .scrollContentBackground(.hidden)
-                    .overlay(Group {
-                        if(items.isEmpty) {
-                            ZStack() {
-                                Color("CadetGrey").ignoresSafeArea()
-                                Text("No Workouts Created")
-                            }
-                        }
-                    })
-                    Spacer()
+                }
+                .alert(isPresented: $showingAlert) { () -> Alert in
+                                Alert(title: Text("Delete"), message: Text("Are you sure you want to delete this workout"), primaryButton: .default(Text("Delete"), action: {
+                                    viewModel.delete(id: workoutIdTodelete)
+                                }), secondaryButton: .default(Text("Dismiss")))
+               
                 }
                 .scrollContentBackground(.hidden)
                 .toolbar{
                     NavigationLink(destination: NewWorkoutView(userId: userId)){
-                            Image(systemName: "plus")
-                                .foregroundColor(Color("LightCyan"))
+                        Image(systemName: "plus")
+                            .foregroundColor(Color("LightCyan"))
                     }
                 }
             }
@@ -70,7 +74,7 @@ struct HomeView: View {
     
     struct HomeView_Previews: PreviewProvider {
         static var previews: some View {
-            HomeView(userId: "eNVQVVMOINhyq3EFLTvMCiCz1aY2")
+            HomeView(userId: "Kx4D0jj4HoV6e4mAlGQUoPl1Khe2")
         }
     }
 }

@@ -27,7 +27,8 @@ struct WorkoutListItem: View {
                 Color("CadetGrey")
                     .ignoresSafeArea()
                 VStack{
-                    ScrollView{                        Text(workout.name)
+                    ScrollView{
+                        Text(workout.name)
                             .font(.system(size: 25, weight: .bold))
                             .foregroundColor(.white)
                             .padding()

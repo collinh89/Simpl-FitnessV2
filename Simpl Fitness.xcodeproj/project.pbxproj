@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		199506C72A5F459D00E696D4 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 199506C62A5F459D00E696D4 /* GoogleService-Info.plist */; };
+		19C5951E2A6D6DA000D0B597 /* WorkoutCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19C5951D2A6D6DA000D0B597 /* WorkoutCard.swift */; };
 		19ED6E1A2A68D24A00BFB321 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19ED6E192A68D24A00BFB321 /* LoadingView.swift */; };
 		5109A6972A368A4600DE4342 /* WorkoutListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5109A6962A368A4600DE4342 /* WorkoutListItem.swift */; };
 		5109A6992A36967B00DE4342 /* ExerciseCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5109A6982A36967B00DE4342 /* ExerciseCard.swift */; };
@@ -65,6 +66,7 @@
 
 /* Begin PBXFileReference section */
 		199506C62A5F459D00E696D4 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "Simpl Fitness/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		19C5951D2A6D6DA000D0B597 /* WorkoutCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutCard.swift; sourceTree = "<group>"; };
 		19ED6E192A68D24A00BFB321 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		5109A6962A368A4600DE4342 /* WorkoutListItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutListItem.swift; sourceTree = "<group>"; };
 		5109A6982A36967B00DE4342 /* ExerciseCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseCard.swift; sourceTree = "<group>"; };
@@ -139,6 +141,7 @@
 				51CEB6432A3284CD00C06121 /* HomeView.swift */,
 				5149290D2A364B1100D00863 /* NewWorkoutView.swift */,
 				513CE6BA2A3BB631009FCC44 /* AddOrRemoveExerciseView.swift */,
+				19C5951D2A6D6DA000D0B597 /* WorkoutCard.swift */,
 			);
 			path = Workout;
 			sourceTree = "<group>";
@@ -439,6 +442,7 @@
 				51CEB6542A328B7200C06121 /* ProfileView.swift in Sources */,
 				5109A69D2A369FDA00DE4342 /* ExerciseViewViewModel.swift in Sources */,
 				513CE6BF2A3CBAF3009FCC44 /* WorkoutListItemViewModel.swift in Sources */,
+				19C5951E2A6D6DA000D0B597 /* WorkoutCard.swift in Sources */,
 				51CEB6092A327FF200C06121 /* MainView.swift in Sources */,
 				51CEB64A2A32872E00C06121 /* RegisterView.swift in Sources */,
 				51CEB6502A3287C000C06121 /* Extensions.swift in Sources */,

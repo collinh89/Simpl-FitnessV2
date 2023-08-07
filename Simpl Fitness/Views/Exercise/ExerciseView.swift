@@ -9,8 +9,9 @@ import SwiftUI
 
 struct ExerciseView: View {
     @StateObject var viewModel: ExerciseViewViewModel
-    
+    @FirestoreQuery var exercises: [Exercise]
     init(userId: String){
+        self._exercises = FirestoreQuery(collectionPath: "users/\(userId)/exercises")
         self._viewModel = StateObject(wrappedValue: ExerciseViewViewModel(userId: userId))
     }
     
@@ -33,7 +34,7 @@ struct ExerciseView: View {
                                     .foregroundColor(.white)
                                     .padding()
                                 
-                                ForEach(viewModel.exercises.filter{$0.category == item}){ item in
+                                ForEach(exercises.filter{$0.category == item}){ item in
                                     ExerciseCard(exercise: item)
                                         .swipeActions(edge: .trailing){
                                             Button("Delete"){
@@ -51,14 +52,6 @@ struct ExerciseView: View {
                     }
                 }
                 .toolbar{
-                    Button{
-                        //action
-                        viewModel.getExercises()
-                    } label: {
-                        Image(systemName: "gobackward")
-                            .foregroundColor(Color("LightCyan"))
-                    }
-                    Spacer().padding(.trailing, 298)
                     Button{
                         //action
                         viewModel.showingNewItemView = true
