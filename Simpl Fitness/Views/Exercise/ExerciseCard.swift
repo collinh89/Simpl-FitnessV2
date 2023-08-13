@@ -87,9 +87,7 @@ struct ExerciseCard: View {
         }
         .transition(.move(edge: .bottom))
         .frame(maxWidth: .infinity, alignment: .center)
-        .background(isDone ?         LinearGradient(gradient: Gradient(colors: [Color("LightCyan"), Color("LightBlue")]), startPoint: .top, endPoint: .bottom)
- :         LinearGradient(gradient: Gradient(colors: [Color("LightCyan"), Color("OxfordBlue")]), startPoint: .top, endPoint: .bottom)
-)
+        .background(isDone ? Color("LightBlue") : Color("OxfordBlue"))
         .modifier(CardModifier())
         .padding(.all, 10)
     }
