@@ -26,7 +26,7 @@ struct ExerciseView: View {
                             .font(.system(size: 36, weight: .bold))
                             .foregroundColor(Color("OxfordBlue"))
                         
-                        ForEach(viewModel.categories.sorted(), id: \.self){ item in
+                        ForEach(exercises.map{$0.category}, id: \.self){ item in
                             Section(){
                                 Text(item)
                                     .frame(maxWidth: .infinity , alignment: .leading)

@@ -49,6 +49,9 @@ struct EditExerciseView: View {
                     }
                     .labelsHidden()
                     .pickerStyle(SegmentedPickerStyle())
+                    .onChange(of: selection){ category in
+                        viewModel.category = category
+                    }
                     Picker("\(viewModel.category)", selection: $selection) {
                         ForEach(categories2, id: \.self) {
                             Text($0)

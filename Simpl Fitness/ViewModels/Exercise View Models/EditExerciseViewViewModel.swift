@@ -46,6 +46,7 @@ class EditExerciseViewViewModel: ObservableObject{
             reps: reps,
             category: category
         )
+        
         let db = Firestore.firestore()
         db.collection("users")
             .document(self.userId)
@@ -53,19 +54,9 @@ class EditExerciseViewViewModel: ObservableObject{
             .document(self.exerciseId)
             .setData(exerciseToUpdate.asDictionary())
         
-        let workouts = getWorkouts()
-        
-        for workout in workouts {
-            db.collection("users")
-                .document(self.userId)
-                .collection("workouts")
-                .document(workout.id)
-                .collection("exercises")
-                .document(self.exerciseId)
-                .setData(exerciseToUpdate.asDictionary())
-        }
+        self.getWorkouts()
     }
-    func getWorkouts() -> [Workout]{
+    func getWorkouts(){
         let db = Firestore.firestore()
         
         db.collection("users")
@@ -86,8 +77,29 @@ class EditExerciseViewViewModel: ObservableObject{
                         )
                         self.workouts.append(exercise)
                     }
+                    self.saveWorkoutExercises(workouts: self.workouts)
                 }
             }
-        return self.workouts
+    }
+    
+    func saveWorkoutExercises(workouts: [Workout]){
+        let db = Firestore.firestore()
+        let exerciseToUpdate = Exercise(
+            id: exerciseId,
+            name: name,
+            weight: weight,
+            sets: sets,
+            reps: reps,
+            category: category
+        )
+        for workout in workouts {
+            db.collection("users")
+                .document(self.userId)
+                .collection("workouts")
+                .document(workout.id)
+                .collection("exercises")
+                .document(self.exerciseId)
+                .setData(exerciseToUpdate.asDictionary())
+        }
     }
 }
