@@ -11,37 +11,38 @@ struct MainView: View {
     @StateObject var viewModel = MainViewViewModel()
     
     var body: some View {
-        if viewModel.isSignedIn, !viewModel.currentUserId.isEmpty{
-            //signed in
-            accountView
-                .colorScheme(.light)
+        TabView {
+            HomeView()
+                .tabItem {
+                    Image(systemName: "house.fill")
+                        .padding()
+                }
+            Text("Workouts")
+                .tabItem {
+                    Image(systemName: "dumbbell.fill")
+                }
+            Text("Exercsises")
+                .tabItem {
+                    Image( systemName: "figure.run")
+                }
+            Text("Profile")
+                .tabItem {
+                    Image( systemName: "person.crop.circle.fill")
+                    
+                }
+        }//end of tabView
+        .tint(Color("LightBlue"))
+        .onAppear(){
+            UITabBar.appearance().backgroundColor = UIColor(Color("ToolBarBackground"))
+            UITabBar.appearance().unselectedItemTintColor = .white
+        }
         
-        }else{
-            LoginView()
-        }
-    }
-    
-    @ViewBuilder
-    var accountView: some View {
-        TabView{
-            Group{
-                HomeView(userId: viewModel.currentUserId)
-                    .tabItem{
-                        Label("Workouts", systemImage: "scalemass")
-                    }
-                ExerciseView(userId: viewModel.currentUserId)
-                    .tabItem{
-                        Label("Exercises", systemImage: "figure.strengthtraining.traditional")
-                    }
-                ProfileView()
-                    .tabItem{
-                        Label("Profile", systemImage: "person.circle")
-                    }
-            }
-            .toolbarBackground(.visible, for: .tabBar)
-            .toolbarBackground(Color("OxfordBlue"), for: .tabBar)
-            .toolbarColorScheme(.dark, for: .tabBar)
-
-        }
     }
 }
+
+struct MainView_Previews: PreviewProvider {
+    static var previews: some View {
+        MainView()
+    }
+}
+

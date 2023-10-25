@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "51CEB6022A327FF200C06121"
-               BuildableName = "Simpl Fitness.app"
-               BlueprintName = "Simpl Fitness"
-               ReferencedContainer = "container:Simpl Fitness.xcodeproj">
+               BuildableName = "Simpl FitnessV2.app"
+               BlueprintName = "Simpl FitnessV2"
+               ReferencedContainer = "container:Simpl FitnessV2.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -35,9 +35,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "51CEB6132A327FF300C06121"
-               BuildableName = "Simpl FitnessTests.xctest"
-               BlueprintName = "Simpl FitnessTests"
-               ReferencedContainer = "container:Simpl Fitness.xcodeproj">
+               BuildableName = "Simpl FitnessV2Tests.xctest"
+               BlueprintName = "Simpl FitnessV2Tests"
+               ReferencedContainer = "container:Simpl FitnessV2.xcodeproj">
             </BuildableReference>
          </TestableReference>
          <TestableReference
@@ -46,9 +46,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "51CEB61D2A327FF300C06121"
-               BuildableName = "Simpl FitnessUITests.xctest"
-               BlueprintName = "Simpl FitnessUITests"
-               ReferencedContainer = "container:Simpl Fitness.xcodeproj">
+               BuildableName = "Simpl FitnessV2UITests.xctest"
+               BlueprintName = "Simpl FitnessV2UITests"
+               ReferencedContainer = "container:Simpl FitnessV2.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -68,9 +68,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "51CEB6022A327FF200C06121"
-            BuildableName = "Simpl Fitness.app"
-            BlueprintName = "Simpl Fitness"
-            ReferencedContainer = "container:Simpl Fitness.xcodeproj">
+            BuildableName = "Simpl FitnessV2.app"
+            BlueprintName = "Simpl FitnessV2"
+            ReferencedContainer = "container:Simpl FitnessV2.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </LaunchAction>
@@ -85,9 +85,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "51CEB6022A327FF200C06121"
-            BuildableName = "Simpl Fitness.app"
-            BlueprintName = "Simpl Fitness"
-            ReferencedContainer = "container:Simpl Fitness.xcodeproj">
+            BuildableName = "Simpl FitnessV2.app"
+            BlueprintName = "Simpl FitnessV2"
+            ReferencedContainer = "container:Simpl FitnessV2.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
