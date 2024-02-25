@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct RecentWorkoutsHomeView: View {
+struct PopularWorkoutsHomeView: View {
     var body: some View {
         VStack{
             HStack{
@@ -19,12 +19,31 @@ struct RecentWorkoutsHomeView: View {
             }
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack(spacing: 10) {
-                    ForEach(0..<5) {
-                        Text("Item \($0)")
-                            .foregroundStyle(.black)
-                            .font(.largeTitle)
-                            .frame(width: 300, height:200)
-                            .background(Color("ButtonBackgroundColor"))
+                    ForEach(0..<5) {_ in
+                        VStack{
+                            Image("DeafultWorkoutImg")
+                                .resizable()
+                                .frame(width: 350, height: 250)
+                                .offset(y: -55)
+                            HStack{
+                                Text("Mondays Back and Bicepts")
+                                    .foregroundStyle(.white)
+                                    .font(.title)
+                                    .padding(.leading, 30)
+                                    .offset(y: -55)
+                                Spacer()
+                            }
+                            HStack{
+                                Text("Created By Collin Holthaus")
+                                    .foregroundStyle(.white)
+                                    .font(.title3)
+                                    .padding(.leading, 30)
+                                    .offset(y: -55)
+                                Spacer()
+                            }
+                        }
+                            .frame(width: 350, height:250)
+                            .background(Color.black)
                             .cornerRadius(16)
                     }
                 }
@@ -33,8 +52,8 @@ struct RecentWorkoutsHomeView: View {
     }
 }
 
-struct RecentWorkoutsHomeView_Previews: PreviewProvider {
+struct PopularWorkoutsHomeView_Previews: PreviewProvider {
     static var previews: some View {
-        RecentWorkoutsHomeView()
+        PopularWorkoutsHomeView()
     }
 }

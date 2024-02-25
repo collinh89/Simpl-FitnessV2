@@ -12,31 +12,36 @@ struct MainView: View {
     
     var body: some View {
         TabView {
-            HomeView()
-                .tabItem {
-                    Image(systemName: "house.fill")
-                        .padding()
-                }
-            Text("Workouts")
-                .tabItem {
-                    Image(systemName: "dumbbell.fill")
-                }
-            Text("Exercsises")
-                .tabItem {
-                    Image( systemName: "figure.run")
-                }
-            Text("Profile")
-                .tabItem {
-                    Image( systemName: "person.crop.circle.fill")
-                    
-                }
+                HomeView()
+                    .tabItem {
+                        Image(systemName: "house.fill")
+                            .foregroundColor(.white)
+                            .padding()
+                    }
+                    .toolbar(.visible, for: .tabBar)
+                    .toolbarBackground(Color("ToolBarBackground"), for: .tabBar)
+                Text("Workouts")
+                    .tabItem {
+                        Image(systemName: "dumbbell.fill")
+                            .foregroundColor(.white)
+                    }
+                    .toolbar(.visible, for: .tabBar)
+                    .toolbarBackground(Color("ToolBarBackground"), for: .tabBar)
+                Text("Exercsises")
+                    .tabItem {
+                        Image( systemName: "figure.run")
+                    }
+                    .toolbar(.visible, for: .tabBar)
+                    .toolbarBackground(Color("ToolBarBackground"), for: .tabBar)
+                Text("Profile")
+                    .tabItem {
+                        Image( systemName: "person.crop.circle.fill")
+                    }
+                    .toolbar(.visible, for: .tabBar)
+                    .toolbarBackground(Color("ToolBarBackground"), for: .tabBar)
+
         }//end of tabView
         .tint(Color("LightBlue"))
-        .onAppear(){
-            UITabBar.appearance().backgroundColor = UIColor(Color("ToolBarBackground"))
-            UITabBar.appearance().unselectedItemTintColor = .white
-        }
-        
     }
 }
 

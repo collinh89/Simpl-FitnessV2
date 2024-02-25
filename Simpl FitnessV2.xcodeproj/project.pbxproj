@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		1900B9872AE9B447008592A6 /* SimplFitnessBtn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1900B9862AE9B447008592A6 /* SimplFitnessBtn.swift */; };
 		1900B9892AE9C2E3008592A6 /* RecentExercisesHomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1900B9882AE9C2E3008592A6 /* RecentExercisesHomeView.swift */; };
-		1900B98C2AE9C350008592A6 /* RecentWorkoutsHomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1900B98B2AE9C350008592A6 /* RecentWorkoutsHomeView.swift */; };
+		1900B98C2AE9C350008592A6 /* PopularWorkoutsHomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1900B98B2AE9C350008592A6 /* PopularWorkoutsHomeView.swift */; };
 		199506C72A5F459D00E696D4 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 199506C62A5F459D00E696D4 /* GoogleService-Info.plist */; };
 		513CE6B92A3BA1CE009FCC44 /* SwiftUIReorderableForEach in Frameworks */ = {isa = PBXBuildFile; productRef = 513CE6B82A3BA1CE009FCC44 /* SwiftUIReorderableForEach */; };
 		514929122A364BBA00D00863 /* Workout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 514929112A364BBA00D00863 /* Workout.swift */; };
@@ -48,7 +48,7 @@
 		1900B9852AE86B55008592A6 /* Simpl-FitnessV2-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Simpl-FitnessV2-Info.plist"; sourceTree = "<group>"; };
 		1900B9862AE9B447008592A6 /* SimplFitnessBtn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimplFitnessBtn.swift; sourceTree = "<group>"; };
 		1900B9882AE9C2E3008592A6 /* RecentExercisesHomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentExercisesHomeView.swift; sourceTree = "<group>"; };
-		1900B98B2AE9C350008592A6 /* RecentWorkoutsHomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentWorkoutsHomeView.swift; sourceTree = "<group>"; };
+		1900B98B2AE9C350008592A6 /* PopularWorkoutsHomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopularWorkoutsHomeView.swift; sourceTree = "<group>"; };
 		199506C62A5F459D00E696D4 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "Simpl Fitness/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		514929112A364BBA00D00863 /* Workout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Workout.swift; sourceTree = "<group>"; };
 		514929132A364C2500D00863 /* Exercise.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Exercise.swift; sourceTree = "<group>"; };
@@ -100,7 +100,7 @@
 			children = (
 				51CEB6432A3284CD00C06121 /* HomeView.swift */,
 				1900B9882AE9C2E3008592A6 /* RecentExercisesHomeView.swift */,
-				1900B98B2AE9C350008592A6 /* RecentWorkoutsHomeView.swift */,
+				1900B98B2AE9C350008592A6 /* PopularWorkoutsHomeView.swift */,
 			);
 			path = "Home Views";
 			sourceTree = "<group>";
@@ -326,7 +326,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1900B9892AE9C2E3008592A6 /* RecentExercisesHomeView.swift in Sources */,
-				1900B98C2AE9C350008592A6 /* RecentWorkoutsHomeView.swift in Sources */,
+				1900B98C2AE9C350008592A6 /* PopularWorkoutsHomeView.swift in Sources */,
 				514929142A364C2500D00863 /* Exercise.swift in Sources */,
 				514929122A364BBA00D00863 /* Workout.swift in Sources */,
 				51CEB6092A327FF200C06121 /* MainView.swift in Sources */,
