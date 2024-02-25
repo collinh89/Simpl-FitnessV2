@@ -11,10 +11,9 @@ struct RecentWorkoutsHomeView: View {
     var body: some View {
         VStack{
             HStack{
-                Text("Recent Workouts")
+                Text("Popular Workouts")
                     .foregroundColor(.white)
                     .font(.system(size: 25, weight: .bold))
-                    .padding(.leading, 30)
                 
                 Spacer()
             }
@@ -24,7 +23,7 @@ struct RecentWorkoutsHomeView: View {
                         Text("Item \($0)")
                             .foregroundStyle(.black)
                             .font(.largeTitle)
-                            .frame(width: 200, height: 100)
+                            .frame(width: 300, height:200)
                             .background(Color("ButtonBackgroundColor"))
                             .cornerRadius(16)
                     }
